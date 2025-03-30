@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwl5k5es5hwxf"]
+
+[ext_resource type="Script" uid="uid://bjvjyawxurfh4" path="res://components/syncing_values/net_y_rotation_lerper.gd" id="1_hbhv7"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vjssm"]
+properties/0/path = NodePath(".:networked_rotation_y")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="NetYRotationLerper" type="Node"]
+script = ExtResource("1_hbhv7")
+metadata/_custom_type_script = "uid://bjvjyawxurfh4"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.5
+replication_config = SubResource("SceneReplicationConfig_vjssm")

@@ -1,0 +1,131 @@
+[gd_scene load_steps=20 format=3 uid="uid://charavp71pvq6"]
+
+[ext_resource type="Script" uid="uid://c4r6dyb2wlxwa" path="res://components/entity_components/sprint.gd" id="1_e4p34"]
+[ext_resource type="Script" uid="uid://dy3n4384afa7s" path="res://components/entity_components/gravity.gd" id="1_qly61"]
+[ext_resource type="Script" uid="uid://dgnhrfw17afeb" path="res://entities/player_controller.gd" id="1_x08pd"]
+[ext_resource type="Script" uid="uid://1cmop875841a" path="res://components/entity_components/noclip.gd" id="2_rfe5m"]
+[ext_resource type="Script" uid="uid://cpq3px4w5rdmg" path="res://components/entity_components/jump.gd" id="3_kdgjc"]
+[ext_resource type="Script" uid="uid://n2edawhdtqdd" path="res://components/entity_components/relative_input.gd" id="3_qly61"]
+[ext_resource type="Script" uid="uid://5l8i085oi2ii" path="res://components/entity_components/input_mouse_locker.gd" id="4_rfe5m"]
+[ext_resource type="Script" uid="uid://c8fdk27nvgr0x" path="res://components/entity_components/toggle_fullscreen.gd" id="6_6nm46"]
+[ext_resource type="Script" uid="uid://c7b06cgocrjqj" path="res://components/entity_components/stamina.gd" id="7_i623q"]
+[ext_resource type="Script" uid="uid://ru04rhxl2ptf" path="res://components/entity_components/health_component.gd" id="8_i623q"]
+[ext_resource type="Script" uid="uid://ytug2cwp8uo" path="res://components/entity_components/body_head_rotation.gd" id="9_dchgp"]
+[ext_resource type="PackedScene" uid="uid://55mv0acq64ki" path="res://components/syncing_values/net_position_lerper.tscn" id="10_dchgp"]
+[ext_resource type="Script" uid="uid://bq2437i28fq8q" path="res://components/entity_components/player_camera_mgr.gd" id="11_q0i8f"]
+[ext_resource type="PackedScene" uid="uid://dwl5k5es5hwxf" path="res://components/syncing_values/net_y_rotation_lerper.tscn" id="11_x08pd"]
+[ext_resource type="PackedScene" uid="uid://ceber446a3qku" path="res://components/syncing_values/net_rotation_lerper.tscn" id="15_0i614"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u3f3p"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_merdl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_q0i8f"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_i623q"]
+properties/0/path = NodePath("PlayerNameLabel:text")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_u3f3p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_merdl")
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("1_x08pd")
+
+[node name="Gravity" type="Node" parent="PlayerController"]
+script = ExtResource("1_qly61")
+metadata/_custom_type_script = "uid://dy3n4384afa7s"
+
+[node name="Jump" type="Node" parent="PlayerController"]
+script = ExtResource("3_kdgjc")
+metadata/_custom_type_script = "uid://cpq3px4w5rdmg"
+
+[node name="Sprint" type="Node" parent="PlayerController"]
+script = ExtResource("1_e4p34")
+metadata/_custom_type_script = "uid://c4r6dyb2wlxwa"
+
+[node name="RelativeInput" type="Node" parent="PlayerController"]
+script = ExtResource("3_qly61")
+metadata/_custom_type_script = "uid://n2edawhdtqdd"
+
+[node name="InputMouseLocker" type="Node" parent="PlayerController"]
+script = ExtResource("4_rfe5m")
+metadata/_custom_type_script = "uid://5l8i085oi2ii"
+
+[node name="Noclip" type="Node" parent="PlayerController"]
+script = ExtResource("2_rfe5m")
+metadata/_custom_type_script = "uid://1cmop875841a"
+
+[node name="ToggleFullscreen" type="Node" parent="PlayerController"]
+script = ExtResource("6_6nm46")
+metadata/_custom_type_script = "uid://c8fdk27nvgr0x"
+
+[node name="Stamina" type="Node" parent="PlayerController"]
+script = ExtResource("7_i623q")
+metadata/_custom_type_script = "uid://c7b06cgocrjqj"
+
+[node name="BodyHeadRotation" type="Node" parent="PlayerController"]
+script = ExtResource("9_dchgp")
+metadata/_custom_type_script = "uid://ytug2cwp8uo"
+
+[node name="PlayerCameraMgr" type="Node" parent="PlayerController"]
+script = ExtResource("11_q0i8f")
+metadata/_custom_type_script = "uid://bq2437i28fq8q"
+
+[node name="CoyoteTimer" type="Timer" parent="PlayerController"]
+wait_time = 0.5
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("8_i623q")
+metadata/_custom_type_script = "uid://ru04rhxl2ptf"
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50967, 0)
+
+[node name="FpsCamera" type="Camera3D" parent="Head"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head"]
+mesh = SubResource("BoxMesh_q0i8f")
+
+[node name="Networked" type="Node" parent="."]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Networked"]
+root_path = NodePath("../..")
+replication_config = SubResource("SceneReplicationConfig_i623q")
+
+[node name="NetPositionLerper" parent="Networked" node_paths=PackedStringArray("controlled_object") instance=ExtResource("10_dchgp")]
+controlled_object = NodePath("../..")
+
+[node name="MultiplayerSynchronizer" parent="Networked/NetPositionLerper" index="0"]
+replication_interval = 0.05
+
+[node name="NetYRotationLerper" parent="Networked" node_paths=PackedStringArray("controlled_object") instance=ExtResource("11_x08pd")]
+controlled_object = NodePath("../..")
+
+[node name="NetRotationLerper" parent="Networked" node_paths=PackedStringArray("controlled_object") instance=ExtResource("15_0i614")]
+controlled_object = NodePath("../../Head")
+
+[node name="MultiplayerSynchronizer" parent="Networked/NetRotationLerper" index="0"]
+replication_interval = 0.1
+
+[node name="PlayerNameLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27529, 0)
+billboard = 1
+text = "PlayerName"
+
+[node name="PeerIdLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55996, 0)
+billboard = 1
+text = "Peer ID"
+
+[editable path="Networked/NetPositionLerper"]
+[editable path="Networked/NetYRotationLerper"]
+[editable path="Networked/NetRotationLerper"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b68t6xlxt0hrj"]
+
+[ext_resource type="Material" uid="uid://d4mam7g5e1dp4" path="res://assets/materials/dev_orange1.material" id="1_o3odq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w7r7j"]
+material = ExtResource("1_o3odq")
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6mel"]
+size = Vector3(5, 1, 5)
+
+[node name="OrangeFloorTile" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_w7r7j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_o6mel")

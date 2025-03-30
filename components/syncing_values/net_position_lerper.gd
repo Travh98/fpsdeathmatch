@@ -1,0 +1,55 @@
+class_name NetPositionLerper
+extends Node
+
+## Replicates an objects position from host and lerps to it on clients
+##
+## When the host/owner of the controlled_object periodically
+## syncs its position with other clients, the other clients
+## will receive the new position and use this node to smoothly
+## lerp their replicated node's position to the newly received 
+## position. This allows us to sync the position of objects
+## less frequently, freeing up network bandwidth.
+##
+## For slow moving and non-important objects, you can sync 
+## their positions less often and have little gameplay impact.
+## For important objects, such as a player in a fast-paced shooter
+## like counter-strike, you'll want to sync their position often
+## but still lerp between positions so they are not teleporting
+## around in the world. Look up "peeker's advantage" for more context.
+
+## The synchronizer for this position syncer.
+## Set the Synchronizer to always sync this 
+## node's networked_position variable.
+## You can set the replication_interval of 
+## this MultiplayerSyncronizer to free up bandwidth
+@onready var multiplayer_synchronizer = $MultiplayerSynchronizer
+
+## The variable to sync between clients (must be exported for Syncronizer to see it)
+@export var networked_position: Vector3
+## The Node3D that is being controlled by this syncronizer
+@export var controlled_object: Node3D
+## Speed to lerp between synced values.
+## Higher lerp speed means faster snapping between synced values.
+@export var lerp_speed: float = 8.0
+
+
+func _ready():
+	if multiplayer_synchronizer == null:
+		push_warning(name + " is missing MultiplayerSynchronizer")
+	if controlled_object == null:
+		push_warning(name + " is missing the object it is syncing")
+	pass
+
+
+func _physics_process(delta):
+	# Clients will lerp their replicated object to the networked position
+	if not is_multiplayer_authority(): 
+		controlled_object.global_position = lerp(
+			controlled_object.global_position, 
+			networked_position, 
+			lerp_speed * delta)
+		return
+	
+	# Host will update the networked position,
+	# which will be synced to all clients to lerp to
+	networked_position = controlled_object.global_position

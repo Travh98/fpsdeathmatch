@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bed2n7dtcal82"]
+
+[ext_resource type="Material" uid="uid://2xpm3lamq8y4" path="res://assets/materials/dev_dark2.material" id="1_ohei6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w7r7j"]
+material = ExtResource("1_ohei6")
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6mel"]
+size = Vector3(5, 1, 5)
+
+[node name="DarkFloorTileA" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_w7r7j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_o6mel")

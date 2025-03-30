@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://4mhttb6mwnrw"]
+
+[ext_resource type="Script" uid="uid://bou2isa5sxbdn" path="res://ui/fps_counter.gd" id="1_y465k"]
+
+[node name="FpsCounter" type="HBoxContainer"]
+alignment = 2
+script = ExtResource("1_y465k")
+
+[node name="FpsCount" type="Label" parent="."]
+layout_mode = 2
+text = "[frames]"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "FPS"
+
+[node name="UpdateFpsTimer" type="Timer" parent="."]
