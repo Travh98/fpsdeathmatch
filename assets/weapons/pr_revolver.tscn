@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://hfcf71x4or3a"]
+
+[ext_resource type="PackedScene" uid="uid://cqw4raw0vemi8" path="res://assets/weapons/Revolver.glb" id="1_1iedb"]
+
+[node name="Revolver" instance=ExtResource("1_1iedb")]
+
+[node name="Skeleton3D" parent="RevolverRig" index="0"]
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+
+[node name="RevolverHammer" parent="RevolverRig/Skeleton3D" index="0"]
+transform = Transform3D(0.00686619, 1.34476e-11, -7.46338e-09, -7.46037e-10, 0.0120249, -0.0141493, 1.45715e-09, 0.00609319, 0.0279237, 3.51932e-05, 0.112362, 0.0552933)
+
+[node name="Cube_004" parent="RevolverRig/Skeleton3D" index="1"]
+transform = Transform3D(0.058854, -2.64698e-23, 0, 3.30872e-23, 0.0588541, 0, 1.32349e-23, 0, 0.058854, -2.58194e-16, -0.00836527, 0.00459307)
+
+[node name="RevolverCylinder" parent="RevolverRig/Skeleton3D" index="2"]
+transform = Transform3D(0.0326766, 7.25546e-18, -7.31043e-18, -7.25548e-18, -0.000246506, -0.0326757, -7.3104e-18, 0.0326757, -0.000246506, 6.09943e-05, 0.156241, 0.123132)

@@ -15,6 +15,7 @@ extends Node
 @onready var stamina: Stamina = $Stamina
 @onready var sprint: Sprint = $Sprint
 @onready var player_camera_mgr: PlayerCameraMgr = $PlayerCameraMgr
+@onready var use_equipped_item: UseEquippedItem = $UseEquippedItem
 ## Timer for allowing player to jump slightly after stepping off a platform
 @onready var coyote_timer: Timer = $CoyoteTimer
 
@@ -25,6 +26,15 @@ extends Node
 #@onready var player_hud: PlayerHud = $"../Head/PlayerHUD"
 @onready var player_name_label = $"../PlayerNameLabel"
 #@onready var player_indicator: Sprite3D = $"../PlayerIndicator"
+@onready var player_hud: PlayerHud = $"../PlayerHUD"
+## The visuals for the player, seen by other players
+@onready var godoot_man_player_model: GodootManPlayerModel = $"../GodootManPlayerModel"
+@onready var eye_cast: RayCast3D = $"../Head/FpsCamera/EyeCast"
+@onready var hand_spot: Node3D = $"../Head/HandSpot"
+
+
+
+
 
 ## The raw input from WASD keys
 var input_axis: Vector2 = Vector2()
@@ -34,6 +44,8 @@ var move_dir: Vector3
 var move_speed: float = 5
 ## Current lerp speed for smooth animations
 var lerp_speed: float = 8
+## Position of this player during the last frame
+var last_frame_position: Vector3 = Vector3.ZERO
 
 ## Speed of the player when walking
 const WALK_SPEED: float = 5
@@ -45,12 +57,21 @@ func _ready():
 	
 	# Disable or delete things that don't need to be included
 	# on replicated peers
+	# Also setup things that happen only on replicated peers
 	if not is_multiplayer_authority(): 
-		#player_hud.queue_free()
+		player_hud.queue_free()
+		godoot_man_player_model.start_ik()
+		godoot_man_player_model.on_hand_item_held()
 		return
+	
+	# Hide the playermodel for this client (so you don't see yourself)
+	godoot_man_player_model.visible = false
 	
 	player_name_label.text = ClientGlobals.client_name
 	#player_indicator.modulate = generate_random_hsv_color()
+	
+	use_equipped_item.eye_cast = eye_cast
+	use_equipped_item.hand_spot = hand_spot
 
 
 func _input(event):
@@ -66,13 +87,26 @@ func _input(event):
 	# Rotate the player with the mouse
 	if event is InputEventMouseMotion:
 		body_head_rotation.apply_mouse_rotation(event, mob, head)
+	
+	if Input.is_action_just_pressed("primary"):
+		use_equipped_item.handle_primary()
 
 
 func _physics_process(delta: float) -> void:
 	# Only run physics calculations for this client
 	# since replicated clients will have their 
 	# positions set over the network
-	if not is_multiplayer_authority(): return
+	if not is_multiplayer_authority(): 
+		# Rotate replicated players to face the direction their head is looking in
+		mob.rotation.y = lerp_angle(mob.rotation.y, head.global_rotation.y, delta * lerp_speed)
+		
+		# Calculate the speed between frames, since this replicated
+		# player does not have a velocity calculated 
+		# by CharacterBody3D's move_and_slide (units per second)
+		var run_speed: float = last_frame_position.distance_to(mob.global_position) / delta
+		godoot_man_player_model.set_running_pct(clampf(run_speed / WALK_SPEED, 0.0, 1.0))
+		last_frame_position = mob.global_position
+		return
 	
 	if mob.is_on_floor():
 		# Reset the coyote timer while on ground
@@ -86,6 +120,7 @@ func _physics_process(delta: float) -> void:
 		# If player is not allowed to move by the game,
 		# still apply gravity forces
 		mob.move_and_slide()
+		last_frame_position = mob.global_position
 		return
 	
 	if health_component.is_dead:
@@ -100,6 +135,7 @@ func _physics_process(delta: float) -> void:
 	if noclip.is_noclip:
 		# Allow player to fly through walls and floors (for debugging)
 		noclip.handle_noclip(input_axis)
+		last_frame_position = mob.global_position
 		return
 	
 	if mob.is_on_floor() or not coyote_timer.is_stopped():
@@ -128,3 +164,4 @@ func _physics_process(delta: float) -> void:
 	
 	# Apply movement forces
 	mob.move_and_slide()
+	last_frame_position = mob.global_position

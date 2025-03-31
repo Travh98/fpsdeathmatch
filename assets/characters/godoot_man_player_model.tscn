@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://blc5hnsk32uqd"]
+
+[ext_resource type="PackedScene" uid="uid://b5sp72gk77dew" path="res://assets/characters/GodootMan.glb" id="1_uqos3"]
+[ext_resource type="Script" uid="uid://cvqi68o87kl46" path="res://assets/characters/godoot_man_playermodel.gd" id="2_k5m0s"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uqos3"]
+animation = &"GodootManRun"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k5m0s"]
+animation = &"Rest"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_q0l35"]
+filter_enabled = true
+filters = ["GodootManRig/Skeleton3D:foot.L", "GodootManRig/Skeleton3D:foot.R", "GodootManRig/Skeleton3D:heel.02.R", "GodootManRig/Skeleton3D:shin.L", "GodootManRig/Skeleton3D:shin.R", "GodootManRig/Skeleton3D:spine", "GodootManRig/Skeleton3D:thigh.L", "GodootManRig/Skeleton3D:thigh.R", "GodootManRig/Skeleton3D:toe.R"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_iubvk"]
+graph_offset = Vector2(-780.596, 56.6399)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_k5m0s")
+nodes/Animation/position = Vector2(-340, 120)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_uqos3")
+"nodes/Animation 2/position" = Vector2(-380, 300)
+nodes/Running/node = SubResource("AnimationNodeBlend2_q0l35")
+nodes/Running/position = Vector2(-40, 140)
+node_connections = [&"Running", 0, &"Animation", &"Running", 1, &"Animation 2", &"output", 0, &"Running"]
+
+[node name="GodootManPlayerModel" instance=ExtResource("1_uqos3")]
+script = ExtResource("2_k5m0s")
+
+[node name="Skeleton3D" parent="GodootManRig" index="0"]
+bones/0/position = Vector3(0, 0.996074, -0.0501)
+bones/5/rotation = Quaternion(3.82851e-08, 0.861885, -0.507103, -4.7605e-07)
+bones/6/rotation = Quaternion(-3.64461e-07, -0.540308, 0.841467, -1.05202e-07)
+bones/17/rotation = Quaternion(0.859755, 0.0212024, -0.0125757, 0.510112)
+bones/18/rotation = Quaternion(0.163197, 0.00402047, 0.0243214, 0.986286)
+bones/19/rotation = Quaternion(-0.529072, 1.02925e-07, -6.16102e-08, 0.848577)
+bones/22/rotation = Quaternion(0.983394, -0.0242489, -0.00443731, -0.179799)
+bones/23/rotation = Quaternion(0.291093, -0.00717441, -0.0235843, 0.956377)
+bones/24/rotation = Quaternion(-0.529072, -1.02925e-07, 6.16102e-08, 0.848577)
+bones/25/rotation = Quaternion(-4.31393e-08, 0.964307, -0.264788, -7.28031e-08)
+bones/26/rotation = Quaternion(-0.681868, 0.681868, -0.187233, -0.187233)
+
+[node name="Godoot" parent="GodootManRig/Skeleton3D" index="0"]
+transform = Transform3D(1, -9.35918e-14, -1.13687e-13, -5.31797e-14, 1, -1.48546e-07, 3.41061e-13, 2.38419e-07, 1, -7.16978e-14, 1.63961, 0.164813)
+
+[node name="GodootHorns" parent="GodootManRig/Skeleton3D" index="1"]
+transform = Transform3D(1, -9.35918e-14, -1.13687e-13, -5.31797e-14, 1, -1.48546e-07, 3.41061e-13, 2.38419e-07, 1, -7.16978e-14, 1.63961, 0.164813)
+
+[node name="HeadLookAt" type="LookAtModifier3D" parent="GodootManRig/Skeleton3D" index="5"]
+bone_name = "spine.005"
+bone = 5
+
+[node name="BendSpineIk" type="SkeletonIK3D" parent="GodootManRig/Skeleton3D" index="6"]
+root_bone = &"spine.003"
+tip_bone = &"spine.005"
+
+[node name="RightArmIk" type="SkeletonIK3D" parent="GodootManRig/Skeleton3D" index="7"]
+root_bone = &"shoulder.R"
+tip_bone = &"hand.R"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_iubvk")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Running/blend_amount = 1.0

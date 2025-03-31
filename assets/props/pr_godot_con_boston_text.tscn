@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4idxc0elfoyd"]
+
+[ext_resource type="PackedScene" uid="uid://bwehulwi2u2nu" path="res://assets/props/GodotConBostonText.glb" id="1_mwsf6"]
+[ext_resource type="Material" uid="uid://tn2ushw81iyo" path="res://assets/materials/black.material" id="2_ogukx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogukx"]
+albedo_color = Color(0.27451, 0.576471, 1, 1)
+emission_enabled = true
+emission = Color(0.224221, 0.550561, 0.999976, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_vnjjm"]
+material = ExtResource("2_ogukx")
+size = Vector3(80, 20, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ogukx"]
+data = PackedVector3Array(-40, 10, 1, 40, 10, 1, -40, -10, 1, 40, 10, 1, 40, -10, 1, -40, -10, 1, 40, 10, -1, -40, 10, -1, 40, -10, -1, -40, 10, -1, -40, -10, -1, 40, -10, -1, 40, 10, 1, 40, 10, -1, 40, -10, 1, 40, 10, -1, 40, -10, -1, 40, -10, 1, -40, 10, -1, -40, 10, 1, -40, -10, -1, -40, 10, 1, -40, -10, 1, -40, -10, -1, 40, 10, 1, -40, 10, 1, 40, 10, -1, -40, 10, 1, -40, 10, -1, 40, 10, -1, -40, -10, 1, 40, -10, 1, -40, -10, -1, 40, -10, 1, 40, -10, -1, -40, -10, -1)
+
+[node name="GodotConBostonText" instance=ExtResource("1_mwsf6")]
+
+[node name="GodotConBostonText" parent="." index="0"]
+transform = Transform3D(15.3008, 0, 0, 0, 0, -15.3008, 0, 15.3008, 0, 0, 0, -10.0673)
+surface_material_override/0 = SubResource("StandardMaterial3D_ogukx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 9, -10.4646)
+mesh = SubResource("BoxMesh_vnjjm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_ogukx")

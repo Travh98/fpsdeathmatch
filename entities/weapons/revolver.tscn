@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm6xg2mfckbov"]
+
+[ext_resource type="PackedScene" uid="uid://hfcf71x4or3a" path="res://assets/weapons/pr_revolver.tscn" id="1_gfdo5"]
+
+[node name="Revolver" type="Node3D"]
+
+[node name="Revolver" parent="." instance=ExtResource("1_gfdo5")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[editable path="Revolver"]

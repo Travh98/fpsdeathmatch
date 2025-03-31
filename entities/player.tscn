@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://charavp71pvq6"]
+[gd_scene load_steps=21 format=3 uid="uid://charavp71pvq6"]
 
 [ext_resource type="Script" uid="uid://c4r6dyb2wlxwa" path="res://components/entity_components/sprint.gd" id="1_e4p34"]
+[ext_resource type="PackedScene" uid="uid://blc5hnsk32uqd" path="res://assets/characters/godoot_man_player_model.tscn" id="1_oprnr"]
 [ext_resource type="Script" uid="uid://dy3n4384afa7s" path="res://components/entity_components/gravity.gd" id="1_qly61"]
 [ext_resource type="Script" uid="uid://dgnhrfw17afeb" path="res://entities/player_controller.gd" id="1_x08pd"]
 [ext_resource type="Script" uid="uid://1cmop875841a" path="res://components/entity_components/noclip.gd" id="2_rfe5m"]
@@ -13,14 +14,13 @@
 [ext_resource type="Script" uid="uid://ytug2cwp8uo" path="res://components/entity_components/body_head_rotation.gd" id="9_dchgp"]
 [ext_resource type="PackedScene" uid="uid://55mv0acq64ki" path="res://components/syncing_values/net_position_lerper.tscn" id="10_dchgp"]
 [ext_resource type="Script" uid="uid://bq2437i28fq8q" path="res://components/entity_components/player_camera_mgr.gd" id="11_q0i8f"]
-[ext_resource type="PackedScene" uid="uid://dwl5k5es5hwxf" path="res://components/syncing_values/net_y_rotation_lerper.tscn" id="11_x08pd"]
+[ext_resource type="PackedScene" uid="uid://bm6xg2mfckbov" path="res://entities/weapons/revolver.tscn" id="14_8rie4"]
+[ext_resource type="Script" uid="uid://q7pbmvoxmg8f" path="res://components/entity_components/use_equipped_item.gd" id="14_dp3pk"]
 [ext_resource type="PackedScene" uid="uid://ceber446a3qku" path="res://components/syncing_values/net_rotation_lerper.tscn" id="15_0i614"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_u3f3p"]
+[ext_resource type="PackedScene" uid="uid://bw66n55p0655k" path="res://ui/player_hud.tscn" id="16_oprnr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_merdl"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_q0i8f"]
+radius = 0.235881
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_i623q"]
 properties/0/path = NodePath("PlayerNameLabel:text")
@@ -29,13 +29,53 @@ properties/0/replication_mode = 2
 
 [node name="Player" type="CharacterBody3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_u3f3p")
+[node name="GodootManPlayerModel" parent="." instance=ExtResource("1_oprnr")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="GodootManPlayerModel/GodootManRig" index="0"]
+bones/0/position = Vector3(0, 0.911682, -0.0501)
+bones/17/rotation = Quaternion(0.929251, 0.0229157, -0.00908651, 0.368626)
+bones/18/rotation = Quaternion(0.588147, 0.0145001, 0.0199359, 0.808379)
+bones/19/rotation = Quaternion(-0.329809, 2.21899e-07, -4.58162e-08, 0.944048)
+bones/22/rotation = Quaternion(0.992688, -0.0244791, 0.00291004, 0.118161)
+bones/23/rotation = Quaternion(0.107244, -0.0026407, -0.0245096, 0.993927)
+bones/24/rotation = Quaternion(-0.497521, -1.17783e-07, 6.06693e-08, 0.867452)
+
+[node name="Godoot" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="0"]
+transform = Transform3D(-1, -1.25736e-09, 6.27832e-07, 1.16683e-07, 0.982204, 0.187818, -6.16895e-07, 0.187818, -0.982204, -3.96813e-10, 1.55515, 0.165514)
+
+[node name="GodootHorns" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="1"]
+transform = Transform3D(-1, -1.25736e-09, 6.27832e-07, 1.16683e-07, 0.982204, 0.187818, -6.16895e-07, 0.187818, -0.982204, -3.96813e-10, 1.55515, 0.165514)
+
+[node name="HeadLookAt" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="5"]
+target_node = NodePath("../../../../Head/HeadLookAtIkTarget")
+
+[node name="BendSpineIk" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="6"]
+target_node = NodePath("../../../../Head/HeadLookAtIkTarget")
+
+[node name="RightArmIk" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="7"]
+target_node = NodePath("../../../../Head/HandSpot")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_merdl")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4616, 0)
+
+[node name="FpsCamera" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0687125, -0.080133)
+
+[node name="EyeCast" type="RayCast3D" parent="Head/FpsCamera"]
+target_position = Vector3(0, 0, -2000)
+
+[node name="HeadLookAtIkTarget" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.971047)
+
+[node name="HandSpot" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14822, -0.368713, -0.341573)
+
+[node name="Revolver" parent="Head/HandSpot" instance=ExtResource("14_8rie4")]
 
 [node name="PlayerController" type="Node" parent="."]
 script = ExtResource("1_x08pd")
@@ -80,20 +120,15 @@ metadata/_custom_type_script = "uid://ytug2cwp8uo"
 script = ExtResource("11_q0i8f")
 metadata/_custom_type_script = "uid://bq2437i28fq8q"
 
+[node name="UseEquippedItem" type="Node" parent="PlayerController"]
+script = ExtResource("14_dp3pk")
+
 [node name="CoyoteTimer" type="Timer" parent="PlayerController"]
 wait_time = 0.5
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("8_i623q")
 metadata/_custom_type_script = "uid://ru04rhxl2ptf"
-
-[node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50967, 0)
-
-[node name="FpsCamera" type="Camera3D" parent="Head"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head"]
-mesh = SubResource("BoxMesh_q0i8f")
 
 [node name="Networked" type="Node" parent="."]
 
@@ -106,9 +141,6 @@ controlled_object = NodePath("../..")
 
 [node name="MultiplayerSynchronizer" parent="Networked/NetPositionLerper" index="0"]
 replication_interval = 0.05
-
-[node name="NetYRotationLerper" parent="Networked" node_paths=PackedStringArray("controlled_object") instance=ExtResource("11_x08pd")]
-controlled_object = NodePath("../..")
 
 [node name="NetRotationLerper" parent="Networked" node_paths=PackedStringArray("controlled_object") instance=ExtResource("15_0i614")]
 controlled_object = NodePath("../../Head")
@@ -126,6 +158,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55996, 0)
 billboard = 1
 text = "Peer ID"
 
+[node name="PlayerHUD" parent="." instance=ExtResource("16_oprnr")]
+
+[editable path="GodootManPlayerModel"]
 [editable path="Networked/NetPositionLerper"]
-[editable path="Networked/NetYRotationLerper"]
 [editable path="Networked/NetRotationLerper"]
