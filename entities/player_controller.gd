@@ -30,6 +30,7 @@ extends Node
 ## The visuals for the player, seen by other players
 @onready var godoot_man_player_model: GodootManPlayerModel = $"../GodootManPlayerModel"
 @onready var eye_cast: RayCast3D = $"../Head/FpsCamera/EyeCast"
+@onready var hitbox_cast: RayCast3D = $"../Head/FpsCamera/HitboxCast"
 @onready var hand_spot: Node3D = $"../Head/HandSpot"
 
 
@@ -71,6 +72,7 @@ func _ready():
 	#player_indicator.modulate = generate_random_hsv_color()
 	
 	use_equipped_item.eye_cast = eye_cast
+	use_equipped_item.hitbox_cast = hitbox_cast
 	use_equipped_item.hand_spot = hand_spot
 
 
@@ -125,6 +127,9 @@ func _physics_process(delta: float) -> void:
 	
 	if health_component.is_dead:
 		# Do not move if dead
+		# But also fall if dead
+		mob.move_and_slide()
+		last_frame_position = mob.global_position
 		return
 	
 	# Get the WASD/Controller inputs

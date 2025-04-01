@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdsswlkhlpqot"]
+
+[ext_resource type="PackedScene" uid="uid://cghmvqrpp4lkr" path="res://assets/props/DevWallStraight.glb" id="1_hpx0x"]
+[ext_resource type="Material" uid="uid://2xpm3lamq8y4" path="res://assets/materials/dev_dark2.material" id="2_75hpn"]
+
+[node name="DevWallStraight" instance=ExtResource("1_hpx0x")]
+
+[node name="DevWallStraight" parent="." index="0"]
+material_override = ExtResource("2_75hpn")

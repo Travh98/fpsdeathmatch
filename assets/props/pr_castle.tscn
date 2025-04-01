@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://odrvglhle8pa"]
+
+[ext_resource type="PackedScene" uid="uid://yce1a457awt1" path="res://assets/props/Castle.glb" id="1_sw82c"]
+[ext_resource type="Material" uid="uid://d4mam7g5e1dp4" path="res://assets/materials/dev_orange1.material" id="2_l53xi"]
+
+[node name="Castle" instance=ExtResource("1_sw82c")]
+
+[node name="Castle" parent="." index="0"]
+material_override = ExtResource("2_l53xi")

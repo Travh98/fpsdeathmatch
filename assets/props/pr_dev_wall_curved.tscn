@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpj7bqyjx25pe"]
+
+[ext_resource type="PackedScene" uid="uid://b7wanxlxq4suy" path="res://assets/props/DevWallCurved.glb" id="1_rl87y"]
+[ext_resource type="Material" uid="uid://2xpm3lamq8y4" path="res://assets/materials/dev_dark2.material" id="2_sjy3j"]
+
+[node name="DevWallCurved" instance=ExtResource("1_rl87y")]
+
+[node name="DevWallCurved_001" parent="." index="0"]
+material_override = ExtResource("2_sjy3j")

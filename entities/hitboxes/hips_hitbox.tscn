@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbs33qb1b2ool"]
+
+[ext_resource type="Script" uid="uid://bhpfrvwbmb0w3" path="res://entities/hitboxes/hitbox.gd" id="1_8dbpf"]
+[ext_resource type="Material" uid="uid://beknk1e6onsi8" path="res://assets/materials/dev_yellow_transparent.material" id="2_fq0ix"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8dbpf"]
+material = ExtResource("2_fq0ix")
+size = Vector3(0.455, 0.32, 0.275)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fq0ix"]
+size = Vector3(0.455, 0.32, 0.275)
+
+[node name="HipsHitbox" type="Area3D"]
+script = ExtResource("1_8dbpf")
+vitalness = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8dbpf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fq0ix")

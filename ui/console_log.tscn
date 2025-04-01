@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgbdgj3p53f5f"]
+[gd_scene load_steps=2 format=3 uid="uid://bm3agy7xeuna7"]
 
-[ext_resource type="Script" uid="uid://ccic5r2cyay1h" path="res://ui/console_log.gd" id="1_fnvr3"]
+[ext_resource type="Script" uid="uid://bph24cufg802m" path="res://ui/console_log.gd" id="1_fnvr3"]
 
 [node name="ConsoleLog" type="Control"]
 layout_mode = 3

@@ -17,11 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+ConsoleLogGlobals="*res://ui/console_log_globals.gd"
 ClientGlobals="*res://components/server_connection/client_globals.gd"
+TileInstancesGlobal="*res://addons/tile-instances/tile_instances_global.gd"
 ServerPingRpcs="*res://components/server_rpcs/ServerPingRpcs.gd"
 ServerSpawningRpcs="*res://components/server_rpcs/ServerSpawningRpcs.gd"
-ConsoleLogGlobals="*res://ui/console_log_globals.gd"
-TileInstancesGlobal="*res://addons/tile-instances/tile_instances_global.gd"
+ServerDamageRpcs="*res://components/server_rpcs/ServerDamageRpcs.gd"
+ServerPlayerDataRpcs="*res://components/server_rpcs/ServerPlayerDataRpcs.gd"
 
 [editor_plugins]
 
@@ -94,3 +96,10 @@ switch_view={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="NPCs"
+3d_physics/layer_4="Hitboxes"

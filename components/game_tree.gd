@@ -9,6 +9,8 @@ extends Node
 @onready var server_connector: ServerConnector = $ServerInterface/ServerConnector
 @onready var ping_mgr: PingMgr = $ServerInterface/PingMgr
 @onready var players_mgr: PlayersMgr = $PlayersMgr
+@onready var player_data_mgr: PlayerDataMgr = $PlayerDataMgr
+
 
 func _ready():
 	# Handle hosting, joining and disconnecting 
@@ -19,6 +21,12 @@ func _ready():
 	
 	# Spawn a player for the host if hosting
 	enet_server.create_player_for_host.connect(players_mgr.spawn_player_for_host)
+	
+	# Connect Player Data Manager
+	players_mgr.spawned_character.connect(player_data_mgr.on_player_spawned)
+	ServerDamageRpcs.server_damage_to_player.connect(player_data_mgr.apply_damage_to_player)
+	
+	ServerPlayerDataRpcs.set_player_health.connect(players_mgr.update_player_health)
 	
 	# Share ping with this client's system
 	ping_mgr.ping_calculated.connect(func(ping: float): ClientGlobals.ping_calculated.emit(ping))

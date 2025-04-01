@@ -5,7 +5,7 @@ signal health_changed(health_value: int)
 signal health_died
 signal damage_taken
 
-@export var health: int = 100
+@export var health: int = 100 : set = update_health
 @export var max_health: int = 100
 var invincible: bool = false
 var is_dead: bool = false
@@ -33,7 +33,7 @@ func full_heal():
 
 func update_health(new_health: int):
 	var previous_health: int = health
-	
+	ConsoleLogGlobals.console_log("Updating health for " + get_parent().name)
 	# Limit to max health
 	if new_health > max_health:
 		health = max_health

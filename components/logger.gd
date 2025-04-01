@@ -6,6 +6,7 @@ extends Node
 @onready var start_connect_menu: StartConnectMenu = $"../GuiMgr/StartConnectMenu"
 @onready var esc_menu = $"../GuiMgr/EscMenu"
 @onready var players_mgr: PlayersMgr = $"../PlayersMgr"
+@onready var player_data_mgr: PlayerDataMgr = $"../PlayerDataMgr"
 @onready var connection_timeout: ConnectionTimeout = $"../ServerInterface/ConnectionTimeout"
 @onready var server_connector: ServerConnector = $"../ServerInterface/ServerConnector"
 
@@ -15,6 +16,7 @@ func _ready():
 	# When those signals emit, log details for debugging
 	players_mgr.spawned_character.connect(on_character_spawned)
 	players_mgr.despawned_character.connect(on_character_despawned)
+	player_data_mgr.player_health_updated.connect(on_player_health_updated)
 	start_connect_menu.start_host_server.connect(on_start_hosting)
 	start_connect_menu.start_join_server.connect(on_start_joining)
 	connection_timeout.lost_heartbeat_connection.connect(on_lost_heartbeat_connection)
@@ -27,6 +29,10 @@ func on_character_spawned(peer_id: int):
 
 func on_character_despawned(peer_id: int):
 	ConsoleLogGlobals.console_log("Peer despawned/disconnected: " + str(peer_id))
+
+
+func on_player_health_updated(peer_id: int, new_hp: int):
+	ConsoleLogGlobals.console_log("Peer: " + str(peer_id) + " new health: " + str(new_hp))
 
 
 func on_start_hosting(port: int):

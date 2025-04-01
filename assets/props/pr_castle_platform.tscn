@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0w2vqs5r0nhl"]
+
+[ext_resource type="PackedScene" uid="uid://bjl488t05uevr" path="res://assets/props/CastlePlatform.glb" id="1_ackxd"]
+
+[node name="CastlePlatform" instance=ExtResource("1_ackxd")]

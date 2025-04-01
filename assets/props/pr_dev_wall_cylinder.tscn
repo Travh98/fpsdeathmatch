@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://k2trmc3653vk"]
+
+[ext_resource type="PackedScene" uid="uid://cb6aiyevsssty" path="res://assets/props/DevWallCylinder.glb" id="1_hmcow"]
+[ext_resource type="Material" uid="uid://d4mam7g5e1dp4" path="res://assets/materials/dev_orange1.material" id="2_4jalq"]
+
+[node name="DevWallCylinder" instance=ExtResource("1_hmcow")]
+
+[node name="DevWallCylinder" parent="." index="0"]
+material_override = ExtResource("2_4jalq")

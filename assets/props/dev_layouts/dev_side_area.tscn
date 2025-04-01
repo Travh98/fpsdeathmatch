@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://coih74o4q2c6h"]
+
+[ext_resource type="PackedScene" uid="uid://dxoq60elkepaa" path="res://assets/props/dev/dark_floor_tile.tscn" id="1_yrcha"]
+[ext_resource type="PackedScene" uid="uid://bed2n7dtcal82" path="res://assets/props/dev/dark_floor_tile_a.tscn" id="2_qth8y"]
+
+[node name="SideArea" type="Node3D"]
+
+[node name="DarkFloorTile" parent="." instance=ExtResource("1_yrcha")]
+
+[node name="DarkFloorTileA" parent="." instance=ExtResource("2_qth8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="DarkFloorTileA2" parent="." instance=ExtResource("2_qth8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
+
+[node name="DarkFloorTileA3" parent="." instance=ExtResource("2_qth8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
+
+[node name="DarkFloorTileA4" parent="." instance=ExtResource("2_qth8y")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5, 3, -5)
+
+[node name="DarkFloorTileA5" parent="." instance=ExtResource("2_qth8y")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 3, -5)
+
+[node name="DarkFloorTile2" parent="." instance=ExtResource("1_yrcha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="DarkFloorTile5" parent="." instance=ExtResource("1_yrcha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)

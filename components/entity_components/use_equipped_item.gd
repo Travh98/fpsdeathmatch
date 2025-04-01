@@ -8,10 +8,21 @@ extends Node
 var hand_spot: Node3D
 ## The eye raycast used for clicking on things from player's point of view 
 var eye_cast: RayCast3D
+## The raycast for hitting hitboxes
+var hitbox_cast: RayCast3D : set = set_hitbox_cast
 
 
 func handle_primary():
-	if eye_cast.get_collider():
-		print(name + " handle primary is hitting " + eye_cast.get_collider().to_string())
-	
+	if hand_spot.get_child(0) is Revolver:
+		var revolver: Revolver = hand_spot.get_child(0)
+		revolver.use_primary(eye_cast, hitbox_cast)
+		#print("Using revolver")
+		
+	#print("Using primary")
 	pass
+
+
+func set_hitbox_cast(cast: RayCast3D):
+	hitbox_cast = cast
+	hitbox_cast.collide_with_areas = true
+	hitbox_cast.set_collision_mask_value(4, true)

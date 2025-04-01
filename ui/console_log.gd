@@ -1,7 +1,10 @@
 class_name ConsoleLog
 extends Control
 
+## Displays console text on the screen
+
 @onready var rich_text_label: RichTextLabel = $MarginContainer/HBoxContainer/ScrollContainer/VBoxContainer/RichTextLabel
+
 
 func _ready():
 	ConsoleLogGlobals.log_to_console.connect(console_line)

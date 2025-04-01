@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd5vr63upwr3q"]
+
+[ext_resource type="PackedScene" uid="uid://5gxp3olhpjvs" path="res://assets/props/GodootStuffie.glb" id="1_p1r3s"]
+
+[node name="GodootStuffie" instance=ExtResource("1_p1r3s")]

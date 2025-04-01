@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4bty3pi1ygl1"]
+
+[ext_resource type="Script" uid="uid://bhpfrvwbmb0w3" path="res://entities/hitboxes/hitbox.gd" id="1_h2doy"]
+[ext_resource type="Material" uid="uid://ccr483i5plgo5" path="res://assets/materials/dev_green_transparent.material" id="2_xylkr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h2doy"]
+material = ExtResource("2_xylkr")
+size = Vector3(0.2, 0.585, 0.185)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xylkr"]
+size = Vector3(0.2, 0.585, 0.185)
+
+[node name="ShinHitbox" type="Area3D"]
+script = ExtResource("1_h2doy")
+vitalness = 3
+metadata/_custom_type_script = "uid://bhpfrvwbmb0w3"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31, 0)
+mesh = SubResource("BoxMesh_h2doy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31, 0)
+shape = SubResource("BoxShape3D_xylkr")

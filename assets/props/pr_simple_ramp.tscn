@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvr4d62nd71rt"]
+
+[ext_resource type="PackedScene" uid="uid://b456ekfxycrup" path="res://assets/props/SimpleRamp.glb" id="1_el7g1"]
+[ext_resource type="Material" uid="uid://hhio56ghkktg" path="res://assets/materials/dev_dark1.material" id="2_owl6m"]
+
+[node name="SimpleRamp" instance=ExtResource("1_el7g1")]
+
+[node name="SimpleRamp" parent="." index="0"]
+material_override = ExtResource("2_owl6m")

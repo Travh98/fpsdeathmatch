@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dakj337dawnun"]
+
+[ext_resource type="Script" uid="uid://bhpfrvwbmb0w3" path="res://entities/hitboxes/hitbox.gd" id="1_8ylat"]
+[ext_resource type="Material" uid="uid://raa7txfgf68w" path="res://assets/materials/dev_orange_transparent.material" id="2_1gmau"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ylat"]
+material = ExtResource("2_1gmau")
+size = Vector3(0.565, 0.535, 0.335)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ylat"]
+size = Vector3(0.565, 0.535, 0.335)
+
+[node name="ChestHitbox" type="Area3D"]
+collision_layer = 8
+script = ExtResource("1_8ylat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8ylat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8ylat")

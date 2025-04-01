@@ -1,0 +1,225 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ebl7qk5ixnr"]
+
+[ext_resource type="PackedScene" uid="uid://b4idxc0elfoyd" path="res://assets/props/pr_godot_con_boston_text.tscn" id="1_yudjq"]
+[ext_resource type="PackedScene" uid="uid://dxoq60elkepaa" path="res://assets/props/dev/dark_floor_tile.tscn" id="2_jpcwh"]
+
+[node name="BigTextArea" type="Node3D"]
+
+[node name="GodotConBostonText" parent="." instance=ExtResource("1_yudjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.0751, 0, -5.91525)
+
+[node name="DarkFloorTile8" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1, -10)
+
+[node name="DarkFloorTile4" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -1, -10)
+
+[node name="DarkFloorTile7" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, -10)
+
+[node name="DarkFloorTile9" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1, -15)
+
+[node name="DarkFloorTile5" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -1, -15)
+
+[node name="DarkFloorTile10" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, -15)
+
+[node name="DarkFloorTile11" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -1, -10)
+
+[node name="DarkFloorTile6" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -1, -10)
+
+[node name="DarkFloorTile12" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -1, -10)
+
+[node name="DarkFloorTile13" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -1, -15)
+
+[node name="DarkFloorTile14" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -1, -15)
+
+[node name="DarkFloorTile15" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -1, -15)
+
+[node name="DarkFloorTile16" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.94466e-08, -1, -10)
+
+[node name="DarkFloorTile17" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, -10)
+
+[node name="DarkFloorTile18" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -10)
+
+[node name="DarkFloorTile19" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1917e-07, -1, -15)
+
+[node name="DarkFloorTile20" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, -15)
+
+[node name="DarkFloorTile21" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -15)
+
+[node name="DarkFloorTile22" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1, -10)
+
+[node name="DarkFloorTile23" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, -10)
+
+[node name="DarkFloorTile24" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -1, -10)
+
+[node name="DarkFloorTile25" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1, -15)
+
+[node name="DarkFloorTile26" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, -15)
+
+[node name="DarkFloorTile27" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -1, -15)
+
+[node name="DarkFloorTile28" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -1, -10)
+
+[node name="DarkFloorTile29" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -1, -10)
+
+[node name="DarkFloorTile30" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -1, -10)
+
+[node name="DarkFloorTile31" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -1, -15)
+
+[node name="DarkFloorTile32" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -1, -15)
+
+[node name="DarkFloorTile33" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -1, -15)
+
+[node name="DarkFloorTile34" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -1, -10)
+
+[node name="DarkFloorTile35" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -1, -10)
+
+[node name="DarkFloorTile36" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -1, -10)
+
+[node name="DarkFloorTile37" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -1, -15)
+
+[node name="DarkFloorTile38" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -1, -15)
+
+[node name="DarkFloorTile39" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -1, -15)
+
+[node name="DarkFloorTile40" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -1, 1.90735e-06)
+
+[node name="DarkFloorTile41" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -1, 1.90735e-06)
+
+[node name="DarkFloorTile42" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -1, 1.90735e-06)
+
+[node name="DarkFloorTile43" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -1, -5)
+
+[node name="DarkFloorTile44" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, -1, -5)
+
+[node name="DarkFloorTile45" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -1, -5)
+
+[node name="DarkFloorTile46" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -1, 1.90735e-06)
+
+[node name="DarkFloorTile47" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -1, 1.90735e-06)
+
+[node name="DarkFloorTile48" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -1, 0)
+
+[node name="DarkFloorTile49" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -1, -5)
+
+[node name="DarkFloorTile50" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -1, -5)
+
+[node name="DarkFloorTile51" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, -1, -5)
+
+[node name="DarkFloorTile52" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1, 0)
+
+[node name="DarkFloorTile53" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, 1.90735e-06)
+
+[node name="DarkFloorTile54" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -1, 1.90735e-06)
+
+[node name="DarkFloorTile55" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1, -5)
+
+[node name="DarkFloorTile56" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, -5)
+
+[node name="DarkFloorTile57" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -1, -5)
+
+[node name="DarkFloorTile58" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27374e-13, -1, 1.90735e-06)
+
+[node name="DarkFloorTile59" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 0)
+
+[node name="DarkFloorTile60" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, 1.90735e-06)
+
+[node name="DarkFloorTile61" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97235e-08, -1, -5)
+
+[node name="DarkFloorTile62" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, -5)
+
+[node name="DarkFloorTile63" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -5)
+
+[node name="DarkFloorTile64" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -1, 0)
+
+[node name="DarkFloorTile65" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -1, 1.90735e-06)
+
+[node name="DarkFloorTile66" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -1, 1.90735e-06)
+
+[node name="DarkFloorTile67" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -1, -5)
+
+[node name="DarkFloorTile68" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -1, -5)
+
+[node name="DarkFloorTile69" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -1, -5)
+
+[node name="DarkFloorTile70" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1, 0)
+
+[node name="DarkFloorTile71" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -1, 0)
+
+[node name="DarkFloorTile72" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, 0)
+
+[node name="DarkFloorTile73" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1, -5)
+
+[node name="DarkFloorTile74" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -1, -5)
+
+[node name="DarkFloorTile75" parent="." instance=ExtResource("2_jpcwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, -5)

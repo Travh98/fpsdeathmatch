@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dntng68h7bt2r"]
+
+[ext_resource type="Material" uid="uid://xqbwmt3wnrxj" path="res://assets/materials/dev_red_transparent.material" id="1_1cwkk"]
+[ext_resource type="Script" uid="uid://bhpfrvwbmb0w3" path="res://entities/hitboxes/hitbox.gd" id="1_xcgkb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xcgkb"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_klkjo"]
+material = ExtResource("1_1cwkk")
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="HeadHitbox" type="Area3D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_xcgkb")
+vitalness = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xcgkb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_klkjo")
