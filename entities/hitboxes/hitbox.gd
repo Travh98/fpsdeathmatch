@@ -17,7 +17,7 @@ enum Vitalness {
 	## Not very vital for survival (feet, arms, hands)
 	VITAL_LOW,
 }
-
+## How critical it is if this hitbox takes damage
 @export var vitalness: Vitalness = Vitalness.VITAL_HIGH
 
 

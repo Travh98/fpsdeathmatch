@@ -33,6 +33,6 @@ func on_join_server():
 
 func set_player_name():
 	if player_name_edit.text.is_empty():
-		ClientGlobals.client_name = "silly"
+		ClientGlobals.client_name = "silly" + str(randi_range(0, 10))
 	else:
 		ClientGlobals.client_name = player_name_edit.text

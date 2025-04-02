@@ -10,8 +10,6 @@ extends Node
 
 ## The player or mob that owns this manager.
 @onready var mob: Node3D = $"../.."
-### 
-#@onready var health_component: HealthComponent = $"../../HealthComponent"
 
 ## Store all hitboxes
 var hitboxes: Array[HitBox]
@@ -34,6 +32,8 @@ func _ready():
 	#print("Registered ", hitboxes.size(), " hitboxes for ", mob.name)
 
 
+## Handle when a hitbox has been hit.
+## Tell the server to deal damage to this player.
 func on_hit_taken(vital: HitBox.Vitalness, incoming_dmg: int):
 	var calculated_dmg: int
 	match vital:
@@ -51,9 +51,6 @@ func on_hit_taken(vital: HitBox.Vitalness, incoming_dmg: int):
 			@warning_ignore("narrowing_conversion")
 			calculated_dmg = incoming_dmg * 0.5
 			pass
-	
-	#print(mob.name, " took ", HitBox.Vitalness.keys()[vital], " hit of dmg ", calculated_dmg)
-	ConsoleLogGlobals.console_log("I (peer " + str(multiplayer.get_unique_id()) + ") am shooting " + mob.name + " for " + str(calculated_dmg) + " dmg")
 	
 	# Tell the server you want to deal damage to this player.
 	ServerDamageRpcs.apply_damage_to_player.rpc_id(1, mob.name.to_int(), calculated_dmg)

@@ -36,6 +36,16 @@ func _ready():
 	# When the server says the player's state has changed, update PlayerDataMgr
 	ServerPlayerDataRpcs.update_player_data.connect(player_data_mgr.update_player_data)
 	
+	# When the server receives a request to update player data, update the server's data
+	ServerPlayerDataRpcs.received_player_data_update_request.connect(
+		player_data_mgr.handle_update_player_data_request)
+	
+	# Send all player data to a peer (usually for late joiners)
+	ServerPlayerDataRpcs.send_all_data_to_peer.connect(
+		player_data_mgr.send_all_player_data_to_peer)
+	
+	player_data_mgr.player_name_updated.connect(players_mgr.update_player_name)
+	
 	# Update health of players when server says their health changed
 	player_data_mgr.player_health_updated.connect(players_mgr.update_player_health)
 	
