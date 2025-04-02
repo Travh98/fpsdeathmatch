@@ -11,10 +11,15 @@ signal player_health_updated(peer_id: int, new_hp: int)
 var players_data: Dictionary = {}
 
 
+## Creates a new dictionary entry for this player's data
 func on_player_spawned(peer_id: int):
 	# Store this new player data in the dictionary
 	players_data[peer_id] = {"name": "", "hp": 100, "score": 0}
-	ConsoleLogGlobals.console_log("Created data dict for peer: " + str(peer_id))
+
+
+func on_player_despawned(peer_id: int):
+	# TODO, should data immediately remove or keep it for scoreboards?
+	pass
 
 
 ## Called by the server after a client requests to damage a player
@@ -31,8 +36,6 @@ func apply_damage_to_player(peer_id: int, damage: int):
 	
 	# Server has updated their Player Data, tell the clients the new data
 	ServerPlayerDataRpcs.player_data_updated.rpc(peer_id, "hp", str(players_data[peer_id]["hp"]))
-	
-	#print_full_dict()
 
 
 ## Called when this client receives new player data from the server.
@@ -42,11 +45,10 @@ func update_player_data(peer_id: int, data_key: String, data_value: String):
 		return
 	
 	if not players_data.has(peer_id):
-		ConsoleLogGlobals.console_log("Missing peer_id")
-		print_full_dict()
+		push_warning("Missing peer id for updating player data")
 		return
 	if not players_data[peer_id].has(data_key):
-		ConsoleLogGlobals.console_log("Missing data_key")
+		push_warning("Missing data key for updating player data")
 		return
 	
 	# Update our local dictionary of all of the player's state
@@ -58,9 +60,9 @@ func update_player_data(peer_id: int, data_key: String, data_value: String):
 ## Called when players_data dictionary is updated.
 ## Emits signals to share the new data with the rest of this client's system.
 func on_players_data_updated(peer_id: int, data_key: String):
+	# Emit the relevant signal for the newly updated data
 	match data_key:
 		"hp":
-			ConsoleLogGlobals.console_log("I see health was updated")
 			player_health_updated.emit(peer_id, int(players_data[peer_id][data_key]))
 		"score":
 			pass
@@ -69,7 +71,6 @@ func on_players_data_updated(peer_id: int, data_key: String):
 	pass
 
 
+## Debug print all of the players data
 func print_full_dict():
-	#if multiplayer.is_server():
-		#print(players_data)
 	print(players_data)

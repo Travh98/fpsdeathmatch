@@ -3,12 +3,16 @@ extends Node
 
 ## Manages creating the server (if you are hosting)
 
+## Emits when the host needs a player character spawned for them
 signal create_player_for_host()
 
+## The port to host the server on
 var port: int = 25026
+## The max number of players that can be connected at once
 var max_players: int = 64
 
 
+## Creates a multiplayer peer and starts hosting a server
 func start_server():
 	# Create the server
 	var network: ENetMultiplayerPeer = ENetMultiplayerPeer.new()

@@ -3,12 +3,18 @@ extends Node
 
 ## Manages UI menus, when to show/hide them
 
+## Emitted when the GUI wants to host a game
 signal gui_host_game(port: int)
+## Emitted when the GUI wants to join a game
 signal gui_join_game(ip: String, port: int)
+## Emitted when the GUI wants to disconnect from the server
 signal gui_disconnect_from_server()
 
+## Start menu with connection settings
 @onready var start_connect_menu: StartConnectMenu = $StartConnectMenu
+## Escape/pause menu
 @onready var esc_menu: EscMenu = $EscMenu
+## Console Log GUI
 @onready var console_log: ConsoleLog = $ConsoleLog
 
 
@@ -37,4 +43,3 @@ func hide_start_menu():
 
 func on_server_disconnected():
 	start_connect_menu.visible = true
-	print("GUI sees disconnected from server")

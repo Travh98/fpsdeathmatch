@@ -1,7 +1,7 @@
 class_name Logger
 extends Node
 
-## Hooks up all the signals from components to the logging autoload
+## Hooks up all the signals from components to the logging autoload.
 
 @onready var start_connect_menu: StartConnectMenu = $"../GuiMgr/StartConnectMenu"
 @onready var esc_menu = $"../GuiMgr/EscMenu"
