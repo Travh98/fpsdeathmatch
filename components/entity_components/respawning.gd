@@ -15,6 +15,8 @@ func _ready():
 
 
 func on_death():
+	if not is_multiplayer_authority(): return
+	
 	# Delay respawning
 	await get_tree().create_timer(respawn_delay).timeout
 	

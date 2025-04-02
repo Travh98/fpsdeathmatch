@@ -50,7 +50,8 @@ func on_hit_taken(vital: HitBox.Vitalness, incoming_dmg: int):
 			calculated_dmg = incoming_dmg * 0.5
 			pass
 	
-	print(mob.name, " took ", HitBox.Vitalness.keys()[vital], " hit of dmg ", calculated_dmg)
+	#print(mob.name, " took ", HitBox.Vitalness.keys()[vital], " hit of dmg ", calculated_dmg)
+	ConsoleLogGlobals.console_log("I (peer " + str(multiplayer.get_unique_id()) + ") am shooting " + mob.name + " for " + str(calculated_dmg) + " dmg")
 	
 	# Tell the server you want to deal damage to this player.
-	ServerDamageRpcs.apply_damage_to_player.rpc(mob.name.to_int(), calculated_dmg)
+	ServerDamageRpcs.apply_damage_to_player.rpc_id(1, mob.name.to_int(), calculated_dmg)

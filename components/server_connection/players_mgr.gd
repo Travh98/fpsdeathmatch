@@ -8,6 +8,8 @@ extends Node
 signal spawned_character(peer_id: int)
 signal despawned_character(peer_id: int)
 
+@onready var multiplayer_spawner: MultiplayerSpawner = $"../MultiplayerSpawner"
+
 ## Scene to instantiate for each player
 const PLAYER = preload("res://components/server_connection/multiplayer_client.tscn")
 
@@ -18,6 +20,8 @@ var player_nodes: Dictionary = {}
 func _ready():
 	multiplayer.peer_connected.connect(on_peer_connected)
 	multiplayer.peer_disconnected.connect(on_peer_disconnected)
+	
+	multiplayer_spawner.spawned.connect(register_local_player)
 
 
 func on_peer_connected(peer_id: int):
@@ -29,10 +33,19 @@ func on_peer_disconnected(peer_id: int):
 	remove_player_character(peer_id)
 
 
+## Spawns a player specifically for the client that is hosting the game
 func spawn_player_for_host():
 	# Add a character for the Host to own and control
-	print("Adding player character for the host: ", multiplayer.get_unique_id())
+	#print("Adding player character for the host: ", multiplayer.get_unique_id())
 	add_player_character(multiplayer.get_unique_id())
+
+
+## Registers this local player into our player_nodes.
+## This is needed since the client's local player is automatically spawned
+## by MultiplayerSpawner, therefore it does not go through our
+## add_player_character function.
+func register_local_player(local_player: Node):
+	player_nodes[multiplayer.get_unique_id()] = local_player
 
 
 func add_player_character(peer_id):
@@ -42,15 +55,16 @@ func add_player_character(peer_id):
 	# Set the player character's name to the peer_id of the Player who owns it
 	player_character.name = str(peer_id)
 	
+	# Store player character node by their peer id
+	player_nodes[peer_id] = player_character
+	
 	# If this new character is this client's character
 	if peer_id == multiplayer.get_unique_id():
+		#spawned_character.emit(peer_id)
 		pass
 	
 	# Players will be a child of this PlayersMgr node
 	add_child(player_character)
-	
-	# Store player character node by their peer id
-	player_nodes[peer_id] = player_character
 	
 	spawned_character.emit(peer_id)
 
@@ -68,18 +82,21 @@ func remove_player_character(peer_id):
 
 
 func update_player_health(peer_id: int, new_hp: int):
-	print("Trying to update player health in playersMgr")
+	#print("Trying to update player health in playersMgr")
 	if not player_nodes.has(peer_id):
 		print("Player nodes does not have peer_id: ", peer_id)
+		print("Player nodes: ", player_nodes)
 		return
 	
-	# This is the name of the player node that is a child of MultiplayerClient
+	# Find the health component under the MultiplayerClient node we are updating
+	# player_peer_name is the name of the player node that is a child of MultiplayerClient
 	var player_peer_name: String = str(peer_id)
 	if not player_nodes[peer_id].has_node(player_peer_name):
 		return
 	if not player_nodes[peer_id].get_node(player_peer_name).has_node("HealthComponent"):
 		return
 	
+	# Update the health on the HealthComponent node of the updated player
 	var health_component: HealthComponent = player_nodes[peer_id].get_node(player_peer_name).get_node("HealthComponent")
-	health_component.health = new_hp
-	print("Updated health of ", peer_id, " to be ", new_hp)
+	health_component.update_health(new_hp)
+	ConsoleLogGlobals.console_log("PlayersMgr: Updated health of " + str(peer_id) + " to be " + str(new_hp))

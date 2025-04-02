@@ -3,6 +3,7 @@ extends Node
 
 ## Manages all high-level networking nodes
 
+signal connected_to_server()
 signal disconnected_from_server()
 
 @onready var enet_server: EnetServer = $EnetServer
@@ -31,3 +32,5 @@ func join_game(ip: String, port: int):
 func server_connection_changed(is_server_connected: bool):
 	if not is_server_connected:
 		disconnected_from_server.emit()
+	else:
+		connected_to_server.emit()
