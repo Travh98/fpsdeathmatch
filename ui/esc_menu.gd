@@ -18,7 +18,7 @@ func _ready():
 	disconnect_button.pressed.connect(func(): disconnect_from_server.emit())
 
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("escape"):
 		if not visible:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

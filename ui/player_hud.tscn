@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bw66n55p0655k"]
 
 [ext_resource type="Script" uid="uid://djh8wx3uk2sbt" path="res://ui/player_hud.gd" id="1_fa7lo"]
-[ext_resource type="PackedScene" path="res://ui/fps_counter.tscn" id="2_awr13"]
+[ext_resource type="PackedScene" uid="uid://462ek3s4gxyu" path="res://ui/fps_counter.tscn" id="2_awr13"]
 [ext_resource type="Texture2D" uid="uid://duosndst2e6pc" path="res://assets/textures/tiny_crosshair.png" id="2_w5gje"]
 [ext_resource type="Script" path="res://ui/ping_counter.gd" id="3_18snh"]
 

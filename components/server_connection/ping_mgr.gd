@@ -49,7 +49,7 @@ func start_ping():
 
 ## Share your ping with the server so they know how healthy the connection is
 ## to each connected client.
-func report_ping(ping: float):
+func report_ping(_ping: float):
 	#Server.report_ping_to_server.rpc_id(1, multiplayer.multiplayer_peer.get_unique_id(), ping)
 	pass
 

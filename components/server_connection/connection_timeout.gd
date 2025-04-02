@@ -24,7 +24,7 @@ func _ready():
 
 
 ## Handle when a ping-response is received from the server
-func on_ping_received(ping: float):
+func on_ping_received(_ping: float):
 	# Start or reset heartbeat timer
 	heartbeat_timer.start()
 

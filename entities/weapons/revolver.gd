@@ -5,7 +5,7 @@ extends Node3D
 @onready var ranged_damage: RangedDamage = $RangedDamage
 
 
-func use_primary(eye_cast: RayCast3D, hitbox_cast: RayCast3D):
+func use_primary(_eye_cast: RayCast3D, hitbox_cast: RayCast3D):
 	if not ammo.is_ammo_loaded():
 		print("out of ammo")
 		ammo.reload_magazine()

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://4mhttb6mwnrw"]
+[gd_scene load_steps=2 format=3 uid="uid://462ek3s4gxyu"]
 
-[ext_resource type="Script" uid="uid://bou2isa5sxbdn" path="res://ui/fps_counter.gd" id="1_y465k"]
+[ext_resource type="Script" path="res://ui/fps_counter.gd" id="1_y465k"]
 
 [node name="FpsCounter" type="HBoxContainer"]
 alignment = 2

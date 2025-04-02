@@ -17,7 +17,7 @@ func on_player_spawned(peer_id: int):
 	players_data[peer_id] = {"name": "", "hp": 100, "score": 0}
 
 
-func on_player_despawned(peer_id: int):
+func on_player_despawned(_peer_id: int):
 	# TODO, should data immediately remove or keep it for scoreboards?
 	pass
 

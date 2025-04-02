@@ -44,9 +44,11 @@ func on_hit_taken(vital: HitBox.Vitalness, incoming_dmg: int):
 			calculated_dmg = incoming_dmg * 1
 			pass
 		HitBox.Vitalness.VITAL_MID:
+			@warning_ignore("narrowing_conversion")
 			calculated_dmg = incoming_dmg * 0.75
 			pass
 		HitBox.Vitalness.VITAL_LOW:
+			@warning_ignore("narrowing_conversion")
 			calculated_dmg = incoming_dmg * 0.5
 			pass
 	

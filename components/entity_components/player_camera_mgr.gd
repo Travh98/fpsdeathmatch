@@ -32,7 +32,7 @@ func _ready():
 	#print("Starting fov: ", fov)
 
 
-func _input(event):
+func _input(_event):
 	# Only allow input for the camera that this client is controlling
 	if not is_multiplayer_authority(): return
 	
@@ -44,7 +44,7 @@ func _input(event):
 		camera_mode = CameraMode.values()[next_view]
 
 
-func _process(delta):
+func _process(_delta):
 	#if camera_mode == CameraMode.CAMERA_STABLE:
 		#stable_camera_rig.global_position = mob.global_position + Vector3.UP
 	pass

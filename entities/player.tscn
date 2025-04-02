@@ -36,23 +36,23 @@ properties/0/replication_mode = 2
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="GodootManPlayerModel/GodootManRig" index="0"]
-bones/0/position = Vector3(0, 0.986526, -0.0501)
+bones/0/position = Vector3(0, 0.917811, -0.0501)
 bones/5/rotation = Quaternion(3.82851e-08, 0.861885, -0.507103, -4.7605e-07)
 bones/6/rotation = Quaternion(-3.64461e-07, -0.540308, 0.841467, -1.05202e-07)
-bones/17/rotation = Quaternion(0.863849, 0.0213034, -0.0124039, 0.503147)
-bones/18/rotation = Quaternion(0.133253, 0.00328206, 0.024432, 0.990775)
-bones/19/rotation = Quaternion(-0.529072, 1.02925e-07, -6.16102e-08, 0.848577)
-bones/22/rotation = Quaternion(0.987231, -0.0243436, -0.00388441, -0.157377)
-bones/23/rotation = Quaternion(0.366898, -0.00904378, -0.0229325, 0.929935)
-bones/24/rotation = Quaternion(-0.529072, -1.02925e-07, 6.16102e-08, 0.848577)
+bones/17/rotation = Quaternion(0.998219, 0.0246149, 0.00134317, -0.0543196)
+bones/18/rotation = Quaternion(0.0701404, 0.00172577, 0.024591, 0.997232)
+bones/19/rotation = Quaternion(-0.512659, 1.18915e-07, -5.88945e-08, 0.858592)
+bones/22/rotation = Quaternion(0.875919, -0.0216009, 0.0118782, 0.481828)
+bones/23/rotation = Quaternion(0.59728, -0.0147254, -0.0197702, 0.801654)
+bones/24/rotation = Quaternion(-0.427686, -2.30648e-07, 3.60394e-08, 0.903927)
 bones/25/rotation = Quaternion(-4.31393e-08, 0.964307, -0.264788, -7.28031e-08)
 bones/26/rotation = Quaternion(-0.681868, 0.681868, -0.187233, -0.187233)
 
 [node name="Godoot" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="0"]
-transform = Transform3D(-1, -1.25742e-09, 6.27832e-07, 1.62731e-07, 0.965304, 0.261129, -6.06377e-07, 0.261129, -0.965304, -3.96813e-10, 1.63, 0.165283)
+transform = Transform3D(-1, -1.25739e-09, 6.27832e-07, 1.20541e-07, 0.981009, 0.193961, -6.16153e-07, 0.193961, -0.981009, -3.96813e-10, 1.56128, 0.165495)
 
 [node name="GodootHorns" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="1"]
-transform = Transform3D(-1, -1.25742e-09, 6.27832e-07, 1.62731e-07, 0.965304, 0.261129, -6.06377e-07, 0.261129, -0.965304, -3.96813e-10, 1.63, 0.165283)
+transform = Transform3D(-1, -1.25739e-09, 6.27832e-07, 1.20541e-07, 0.981009, 0.193961, -6.16153e-07, 0.193961, -0.981009, -3.96813e-10, 1.56128, 0.165495)
 
 [node name="HeadLookAt" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="5"]
 target_node = NodePath("../../../../Head/HeadLookAtIkTarget")
@@ -64,37 +64,37 @@ target_node = NodePath("../../../../Head/HeadLookAtIkTarget")
 target_node = NodePath("../../../../Head/HandSpot")
 
 [node name="HeadBoneAttach" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="8"]
-transform = Transform3D(1, -1.98952e-13, -2.27374e-13, 0, 0.965825, -0.259195, 2.84217e-13, 0.259195, 0.965825, -4.68288e-14, 1.63307, 0.165451)
+transform = Transform3D(1, -1.7053e-13, -1.98952e-13, 0, 0.981396, -0.191996, 2.70006e-13, 0.191996, 0.981395, -4.68288e-14, 1.56435, 0.165451)
 
 [node name="ChestBone" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="9"]
-transform = Transform3D(1, 3.43439e-18, -4.1046e-18, -4.1046e-18, 0.984318, -0.176405, 3.43439e-18, 0.176405, 0.984317, 0, 1.38463, -0.00490002)
+transform = Transform3D(1, 3.43439e-18, -4.1046e-18, -4.1046e-18, 0.984318, -0.176405, 3.43439e-18, 0.176405, 0.984317, 0, 1.31591, -0.00490003)
 
 [node name="HipsBone" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="10"]
-transform = Transform3D(1, 0, 0, 0, 0.968328, -0.249681, 0, 0.249681, 0.968328, 0, 0.986526, -0.0501)
+transform = Transform3D(1, 0, 0, 0, 0.968328, -0.249681, 0, 0.249681, 0.968328, 0, 0.917811, -0.0501)
 
 [node name="ThighBoneL" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="11"]
-transform = Transform3D(0.998785, 0.0492878, 7.19169e-06, 0.0342567, -0.694084, -0.719081, -0.0354368, 0.718205, -0.69493, 0.12176, 1.02089, 0.00140001)
+transform = Transform3D(0.998785, 0.0492881, 7.40985e-06, 0.0461072, -0.93438, 0.353282, 0.0174195, -0.352852, -0.935519, 0.12176, 0.952177, 0.0014)
 
 [node name="ThighBoneR" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="12"]
-transform = Transform3D(0.998785, -0.0492881, -7.38028e-06, -0.0415312, -0.841677, 0.538383, -0.026542, -0.537727, -0.842703, -0.12176, 1.02089, 0.00140001)
+transform = Transform3D(0.998785, -0.0492878, -7.21963e-06, -0.0359518, -0.728438, -0.684169, 0.0337159, 0.683336, -0.729326, -0.12176, 0.952177, 0.0014)
 
 [node name="ShinBoneL" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="13"]
-transform = Transform3D(1, -2.38212e-07, -4.7626e-07, -4.5868e-07, -0.860222, -0.509922, -2.83543e-07, 0.50992, -0.860223, 0.14245, 0.729526, 0.302892)
+transform = Transform3D(1, -5.86931e-09, -2.55709e-07, 1.21988e-07, -0.876855, 0.480755, -2.2344e-07, -0.480755, -0.876857, 0.14245, 0.559937, -0.146722)
 
 [node name="ShinBoneR" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="14"]
-transform = Transform3D(1, -1.293e-07, 3.29951e-07, -3.47723e-07, -0.248078, 0.968741, -4.46157e-08, -0.968741, -0.24808, -0.14245, 0.667568, -0.22433)
+transform = Transform3D(1, 1.71339e-07, -1.17066e-07, 2.10567e-07, -0.86422, 0.503116, -2.01312e-08, -0.503118, -0.864219, -0.14245, 0.646389, 0.288255)
 
 [node name="UpperArmL" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="15"]
-transform = Transform3D(-0.00284319, 0.999905, 0.0134594, -0.999995, -0.00285686, 0.000985468, 0.00102388, -0.0134566, 0.999909, 0.166955, 1.5246, 0.000454813)
+transform = Transform3D(-0.00284319, 0.999905, 0.0134594, -0.999995, -0.00285686, 0.000985468, 0.00102388, -0.0134566, 0.999909, 0.166955, 1.45588, 0.000454813)
 
 [node name="UpperArmR" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="16"]
-transform = Transform3D(-0.00284319, -0.999905, -0.0134594, 0.999995, -0.00285686, 0.000985468, -0.00102388, -0.0134566, 0.999909, -0.166955, 1.5246, 0.000454813)
+transform = Transform3D(-0.00284319, -0.999905, -0.0134594, 0.999995, -0.00285686, 0.000985468, -0.00102388, -0.0134566, 0.999909, -0.166955, 1.45588, 0.000454813)
 
 [node name="ForearmL" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="17"]
-transform = Transform3D(0.0244154, 0.999568, -0.0163344, -0.999197, 0.0238805, -0.0321676, -0.0317636, 0.0171066, 0.999349, 0.51619, 1.5236, -0.00424515)
+transform = Transform3D(0.0244154, 0.999568, -0.0163344, -0.999197, 0.0238805, -0.0321676, -0.0317636, 0.0171066, 0.999349, 0.51619, 1.45488, -0.00424515)
 
 [node name="ForearmR" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="18"]
-transform = Transform3D(0.0244154, -0.999568, 0.0163344, 0.999197, 0.0238805, -0.0321676, 0.0317636, 0.0171066, 0.999349, -0.51619, 1.5236, -0.00424515)
+transform = Transform3D(0.0244154, -0.999568, 0.0163344, 0.999197, 0.0238805, -0.0321676, 0.0317636, 0.0171066, 0.999349, -0.51619, 1.45488, -0.00424515)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
