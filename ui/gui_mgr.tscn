@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://l8snhtkec4yq"]
+[gd_scene load_steps=6 format=3 uid="uid://l8snhtkec4yq"]
 
 [ext_resource type="Script" uid="uid://ul1gdeurdfdp" path="res://ui/gui_mgr.gd" id="1_wx4tc"]
 [ext_resource type="PackedScene" uid="uid://cnc7h6xdn8j2b" path="res://ui/start_connect_menu.tscn" id="2_t21it"]
 [ext_resource type="PackedScene" uid="uid://ylh7yphbomum" path="res://ui/esc_menu.tscn" id="3_godev"]
 [ext_resource type="PackedScene" uid="uid://bm3agy7xeuna7" path="res://ui/console_log.tscn" id="4_kyqyy"]
+[ext_resource type="PackedScene" uid="uid://5vfo1a5akgd3" path="res://ui/player_data_view.tscn" id="5_kyqyy"]
 
 [node name="GuiMgr" type="Node"]
 script = ExtResource("1_wx4tc")
@@ -13,3 +14,5 @@ script = ExtResource("1_wx4tc")
 [node name="EscMenu" parent="." instance=ExtResource("3_godev")]
 
 [node name="ConsoleLog" parent="." instance=ExtResource("4_kyqyy")]
+
+[node name="PlayerDataView" parent="." instance=ExtResource("5_kyqyy")]

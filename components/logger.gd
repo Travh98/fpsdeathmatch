@@ -31,8 +31,9 @@ func on_character_despawned(peer_id: int):
 	ConsoleLogGlobals.console_log("Peer despawned/disconnected: " + str(peer_id))
 
 
-func on_player_health_updated(peer_id: int, new_hp: int):
-	ConsoleLogGlobals.console_log("Peer: " + str(peer_id) + " new health: " + str(new_hp))
+func on_player_health_updated(_peer_id: int, _new_hp: int):
+	#ConsoleLogGlobals.console_log("Peer: " + str(peer_id) + " new health: " + str(new_hp))
+	pass
 
 
 func on_start_hosting(port: int):

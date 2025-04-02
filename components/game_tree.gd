@@ -19,6 +19,8 @@ func _ready():
 	gui_mgr.gui_disconnect_from_server.connect(server_connector.disconnect_from_server)
 	server_interface.disconnected_from_server.connect(gui_mgr.on_server_disconnected)
 	
+	gui_mgr.player_data_view.playerDataMgr = player_data_mgr
+	
 	# Spawn a player for the host if hosting
 	enet_server.create_player_for_host.connect(players_mgr.spawn_player_for_host)
 	

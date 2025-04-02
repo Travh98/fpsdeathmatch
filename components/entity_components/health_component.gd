@@ -29,11 +29,12 @@ func get_health() -> int:
 
 func full_heal():
 	update_health(max_health)
+	ServerPlayerDataRpcs.request_update_player_data.rpc_id(1, multiplayer.get_unique_id(), "hp", str(health))
 
 
 func update_health(new_health: int):
 	var previous_health: int = health
-	ConsoleLogGlobals.console_log("Updating health for " + get_parent().name)
+	
 	# Limit to max health
 	if new_health > max_health:
 		health = max_health

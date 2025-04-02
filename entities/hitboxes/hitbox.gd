@@ -20,6 +20,9 @@ enum Vitalness {
 ## How critical it is if this hitbox takes damage
 @export var vitalness: Vitalness = Vitalness.VITAL_HIGH
 
+## The mob that this hitbox belongs to
+var mob: Node
+
 
 func _ready():
 	# Hitboxes will live on collision layer 4 (hitboxes)

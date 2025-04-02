@@ -16,12 +16,22 @@ signal gui_disconnect_from_server()
 @onready var esc_menu: EscMenu = $EscMenu
 ## Console Log GUI
 @onready var console_log: ConsoleLog = $ConsoleLog
+## GUI for displaying PlayerData
+@onready var player_data_view: PlayerDataView = $PlayerDataView
 
 
 func _ready():
 	start_connect_menu.start_host_server.connect(on_start_menu_host_game)
 	start_connect_menu.start_join_server.connect(on_start_menu_join_game)
 	esc_menu.disconnect_from_server.connect(func(): gui_disconnect_from_server.emit())
+	
+	ClientGlobals.show_console_log_toggled.connect(
+		func(toggled_on: bool): console_log.visible = toggled_on)
+	console_log.visible = ClientGlobals.do_show_console_log
+
+	ClientGlobals.show_player_data_toggled.connect(
+		func(toggled_on: bool): player_data_view.visible = toggled_on)
+	player_data_view.visible = ClientGlobals.do_show_player_data
 	
 	start_connect_menu.visible = true
 	esc_menu.visible = false

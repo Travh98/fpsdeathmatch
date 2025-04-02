@@ -4,6 +4,9 @@ extends Node
 ## Passes user input to trigger an item's functions
 
 
+## The mob for this node
+@onready var mob: Node = $"../.."
+
 ## The Node3D that items will be a child of
 var hand_spot: Node3D
 ## The eye raycast used for clicking on things from player's point of view 
@@ -15,6 +18,7 @@ var hitbox_cast: RayCast3D : set = set_hitbox_cast
 func handle_primary():
 	if hand_spot.get_child(0) is Revolver:
 		var revolver: Revolver = hand_spot.get_child(0)
+		revolver.mob = mob
 		revolver.use_primary(eye_cast, hitbox_cast)
 		#print("Using revolver")
 		

@@ -58,6 +58,20 @@ layout_mode = 2
 layout_mode = 2
 text = "Show Debug Colliders"
 
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="ShowConsoleLog" type="CheckBox" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Show Console Log"
+
+[node name="Label4" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="ShowPlayerData" type="CheckBox" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Show Player Data"
+
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 64)

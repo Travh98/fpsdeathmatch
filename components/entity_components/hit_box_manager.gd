@@ -29,6 +29,7 @@ func _ready():
 	# Connect to each hitbox
 	for hitbox: HitBox in hitboxes:
 		hitbox.hit_taken.connect(on_hit_taken)
+		hitbox.mob = mob
 	#print("Registered ", hitboxes.size(), " hitboxes for ", mob.name)
 
 

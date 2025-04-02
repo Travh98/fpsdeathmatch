@@ -5,6 +5,9 @@ extends Node
 ## Player health, score, etc.
 
 
+## Signal to let the system know any item in the player data was updated
+signal player_data_changed()
+
 signal player_name_updated(peer_id: int, new_name: String)
 signal player_health_updated(peer_id: int, new_hp: int)
 
@@ -29,7 +32,7 @@ func apply_damage_to_player(peer_id: int, damage: int):
 		return
 	
 	# Update hp for this player in our server data
-	players_data[peer_id]["hp"] = players_data[peer_id]["hp"] - damage
+	players_data[peer_id]["hp"] = int(players_data[peer_id]["hp"]) - damage
 	
 	# As the server, update our local game with new data
 	on_players_data_updated(peer_id, "hp")
@@ -92,6 +95,8 @@ func on_players_data_updated(peer_id: int, data_key: String):
 			pass
 		_:
 			print("Unsupported PlayerDataMgr data updated: ", data_key)
+	
+	player_data_changed.emit()
 	pass
 
 
