@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8d4l1j1lxamq"]
+
+[ext_resource type="PackedScene" uid="uid://qr5c2k8u2mbq" path="res://assets/weapons/MuzzleFlash.glb" id="1_ok7nj"]
+[ext_resource type="Texture2D" uid="uid://dc2ro1i6xgjml" path="res://assets/weapons/MuzzleFlash_white_gradient.png" id="2_gyuoe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j182e"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0.957828, 0.364313, 0.209996, 1)
+albedo_texture = ExtResource("2_gyuoe")
+emission_enabled = true
+emission = Color(0.734603, 0.610214, 0.153294, 1)
+emission_energy_multiplier = 4.0
+emission_texture = ExtResource("2_gyuoe")
+
+[node name="MuzzleFlash2" instance=ExtResource("1_ok7nj")]
+
+[node name="MuzzleFlash" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j182e")

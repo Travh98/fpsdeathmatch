@@ -33,9 +33,8 @@ extends Node
 @onready var eye_cast: RayCast3D = $"../Head/FpsCamera/EyeCast"
 @onready var hitbox_cast: RayCast3D = $"../Head/FpsCamera/HitboxCast"
 @onready var hand_spot: Node3D = $"../Head/HandSpot"
-
-
-
+## Helper for stepping over stairs and bumpy terrain
+@onready var step_checker: StepChecker = $"../StepChecker"
 
 
 ## The raw input from WASD keys
@@ -153,6 +152,8 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump"):
 			jump.apply_jump()
 			coyote_timer.stop()
+	
+	step_checker.apply_step(move_dir, delta)
 	
 	# If sprinting
 	var can_sprint: bool = sprint.sprint()

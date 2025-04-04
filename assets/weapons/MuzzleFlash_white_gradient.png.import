@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl732wobhjuii"
-path.s3tc="res://.godot/imported/Revolver_Revolver64.png-ad9499f2b4a910644862c0718623d0ac.s3tc.ctex"
+uid="uid://dc2ro1i6xgjml"
+path.s3tc="res://.godot/imported/MuzzleFlash_white_gradient.png-c2b86b5e56a1037dd72d66f548d38a27.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "12e76dcfc28f76cc20a5a75535b7c198"
+"md5": "b173b7991116cf0583c8b9217942f070"
 }
 
 [deps]
 
-source_file="res://assets/weapons/Revolver_Revolver64.png"
-dest_files=["res://.godot/imported/Revolver_Revolver64.png-ad9499f2b4a910644862c0718623d0ac.s3tc.ctex"]
+source_file="res://assets/weapons/MuzzleFlash_white_gradient.png"
+dest_files=["res://.godot/imported/MuzzleFlash_white_gradient.png-c2b86b5e56a1037dd72d66f548d38a27.s3tc.ctex"]
 
 [params]
 

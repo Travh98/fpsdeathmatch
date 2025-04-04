@@ -3,6 +3,7 @@ extends Node3D
 
 @onready var ammo: Ammo = $Ammo
 @onready var ranged_damage: RangedDamage = $RangedDamage
+@onready var muzzle_flash: MuzzleFlash = $MuzzleFlash
 
 ## The mob that is using this weapon
 var mob: Node
@@ -15,6 +16,8 @@ func use_primary(_eye_cast: RayCast3D, hitbox_cast: RayCast3D):
 		return
 	
 	ammo.use_ammo()
+	muzzle_flash.flash()
+	
 	var hit_target = hitbox_cast.get_collider()
 	if hit_target is HitBox:
 		# Make sure you didn't shoot yourself

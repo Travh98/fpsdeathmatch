@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cknog6tqams0o"]
+
+[ext_resource type="Script" uid="uid://cc66uoaoqkyg0" path="res://entities/weapons/muzzle_flash.gd" id="1_kmj0a"]
+[ext_resource type="PackedScene" uid="uid://c8d4l1j1lxamq" path="res://assets/weapons/pr_muzzle_flash.tscn" id="2_epben"]
+
+[node name="MuzzleFlash" type="Node3D"]
+script = ExtResource("1_kmj0a")
+
+[node name="MuzzleFlash2" parent="." instance=ExtResource("2_epben")]

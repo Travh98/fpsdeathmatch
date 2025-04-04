@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm6xg2mfckbov"]
+[gd_scene load_steps=6 format=3 uid="uid://bm6xg2mfckbov"]
 
 [ext_resource type="PackedScene" uid="uid://hfcf71x4or3a" path="res://assets/weapons/pr_revolver.tscn" id="1_gfdo5"]
 [ext_resource type="Script" uid="uid://8rwg3snx0sgj" path="res://entities/weapons/revolver.gd" id="1_xh4u4"]
 [ext_resource type="Script" uid="uid://cx3vg8nfrvbhw" path="res://components/weapon/ammo.gd" id="3_b33tj"]
 [ext_resource type="Script" uid="uid://yu80v7rujy7f" path="res://components/weapon/ranged_damage.gd" id="4_b33tj"]
+[ext_resource type="PackedScene" uid="uid://cknog6tqams0o" path="res://entities/weapons/muzzle_flash.tscn" id="5_srtrr"]
 
 [node name="Revolver" type="Node3D"]
 script = ExtResource("1_xh4u4")
@@ -28,5 +29,8 @@ ammo_in_reserve = 1000
 
 [node name="RangedDamage" type="Node" parent="."]
 script = ExtResource("4_b33tj")
+
+[node name="MuzzleFlash" parent="." instance=ExtResource("5_srtrr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.187494, -0.29254)
 
 [editable path="Revolver"]

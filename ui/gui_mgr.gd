@@ -37,7 +37,7 @@ func _ready():
 	esc_menu.visible = false
 
 
-func _process(delta: float):
+func _process(_delta: float):
 	# When you press tab, do the opposite of your show player data setting
 	# If its not showing, show it, else hide it if its always showing
 	if Input.is_action_pressed("game_details"):
