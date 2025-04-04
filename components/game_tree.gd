@@ -36,11 +36,11 @@ func _ready():
 	ServerDamageRpcs.server_damage_to_player.connect(player_data_mgr.apply_damage_to_player)
 	
 	# When the server says the player's state has changed, update PlayerDataMgr
-	ServerPlayerDataRpcs.update_player_data.connect(player_data_mgr.update_player_data)
+	ServerPlayerDataRpcs.update_player_data.connect(player_data_mgr.on_server_data_updated)
 	
 	# When the server receives a request to update player data, update the server's data
 	ServerPlayerDataRpcs.received_player_data_update_request.connect(
-		player_data_mgr.handle_update_player_data_request)
+		player_data_mgr.on_data_update_request)
 	
 	# Send all player data to a peer (usually for late joiners)
 	ServerPlayerDataRpcs.send_all_data_to_peer.connect(

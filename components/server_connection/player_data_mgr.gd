@@ -26,64 +26,30 @@ func on_player_despawned(_peer_id: int):
 	pass
 
 
-## Called by the server after a client requests to damage a player
-func apply_damage_to_player(peer_id: int, damage: int):
-	if not multiplayer.is_server():
-		return
-	
-	# Update hp for this player in our server data
-	players_data[peer_id]["hp"] = int(players_data[peer_id]["hp"]) - damage
-	
-	# As the server, update our local game with new data
-	on_players_data_updated(peer_id, "hp")
-	
-	# Server has updated their Player Data, 
-	# tell all the clients about the new data
-	ServerPlayerDataRpcs.player_data_updated.rpc(peer_id, "hp", str(players_data[peer_id]["hp"]))
-
-
 ## Called when this client receives new player data from the server.
-func update_player_data(peer_id: int, data_key: String, data_value: String):
+func on_server_data_updated(peer_id: int, data_key: String, data_value: String):
 	if multiplayer.is_server():
 		# The server already has the latest data, so don't update
 		return
 	
-	# Make sure players_data has been initialized for this peer_id and data_key
-	if not players_data.has(peer_id):
-		push_warning("Missing peer id for updating player data")
-		return
-	if not players_data[peer_id].has(data_key):
-		push_warning("Missing data key for updating player data")
+	if not is_data_valid(peer_id, data_key):
 		return
 	
-	# Update our local dictionary of all of the player's state
-	players_data[peer_id][data_key] = data_value
-	
-	on_players_data_updated(peer_id, data_key)
+	store_data(peer_id, data_key, data_value)
+	pass
 
 
 ## Server calls this to handle a Client's player data update request
-func handle_update_player_data_request(peer_id: int, data_key: String, data_value: String):
+func on_data_update_request(peer_id: int, data_key: String, data_value: String):
 	if not multiplayer.is_server():
 		# Only run this on the server
 		return
 	
-	# Make sure players_data has been initialized for this peer_id and data_key
-	if not players_data.has(peer_id):
-		push_warning("Missing peer id for updating player data")
-		return
-	if not players_data[peer_id].has(data_key):
-		push_warning("Missing data key for updating player data")
-		return
-	
-	print("Updated data on server")
-	# Update our local dictionary of all of the player's state
-	players_data[peer_id][data_key] = data_value
-	
-	on_players_data_updated(peer_id, data_key)
+	store_data(peer_id, data_key, data_value)
 	
 	# Tell clients to update their data
 	ServerPlayerDataRpcs.player_data_updated.rpc(peer_id, data_key, data_value)
+	pass
 
 
 ## Called when players_data dictionary is updated.
@@ -121,6 +87,46 @@ func send_all_player_data_to_peer(peer_id: int):
 	pass
 
 
+## Called by the server after a client requests to damage a player
+func apply_damage_to_player(peer_id: int, damage: int):
+	if not multiplayer.is_server():
+		return
+	
+	# Update hp for this player in our server data
+	var current_hp: int = int(players_data[peer_id]["hp"])
+	if current_hp < 0:
+		return
+	var new_hp: int = current_hp - damage
+	
+	on_data_update_request(peer_id, "hp", str(new_hp))
+	
+	# Server has updated their Player Data, 
+	# tell all the clients about the new data
+	ServerPlayerDataRpcs.player_data_updated.rpc(peer_id, "hp", str(players_data[peer_id]["hp"]))
+
+
 ## Debug print all of the players data
 func print_full_dict():
 	print(players_data)
+
+
+## Checks if input data is valid for updating the data
+func is_data_valid(peer_id: int, data_key: String) -> bool:
+	# Make sure players_data has been initialized for this peer_id and data_key
+	if not players_data.has(peer_id):
+		push_warning("Missing peer id for updating player data")
+		return false
+	if not players_data[peer_id].has(data_key):
+		push_warning("Missing data key for updating player data")
+		return false
+	
+	return true
+
+
+## Stores the incoming player data locally and updates this system
+func store_data(peer_id: int, data_key: String, data_value: String):
+	# Update our local dictionary of all of the player's state
+	players_data[peer_id][data_key] = data_value
+	
+	# Update the rest of this system
+	on_players_data_updated(peer_id, data_key)
