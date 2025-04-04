@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://g6mmf02yxwia"]
+[gd_scene load_steps=18 format=3 uid="uid://g6mmf02yxwia"]
 
 [ext_resource type="PackedScene" uid="uid://cft3h8yxgjreb" path="res://assets/props/dev_layouts/dev_starting_area_floor.tscn" id="1_gmgay"]
 [ext_resource type="PackedScene" uid="uid://c03e55vwjyii" path="res://assets/props/pr_museum_grass.tscn" id="3_w7r7j"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dnwnpopuqupbd" path="res://assets/props/pr_castle_grass.tscn" id="8_ly3hx"]
 [ext_resource type="PackedScene" uid="uid://bd5vr63upwr3q" path="res://assets/props/pr_godoot_stuffie.tscn" id="9_wkb0e"]
 [ext_resource type="PackedScene" uid="uid://dvr4d62nd71rt" path="res://assets/props/pr_simple_ramp.tscn" id="11_paa45"]
+[ext_resource type="PackedScene" uid="uid://csix6vkcxobq8" path="res://entities/level_entities/respawn_point.tscn" id="12_axl34"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gmgay"]
 sky_top_color = Color(0.58291, 0.765412, 0.917934, 1)
@@ -231,6 +232,12 @@ transform = Transform3D(-0.998847, 0, -0.0480129, 0, 1, 0, 0.0480129, 0, -0.9988
 
 [node name="SimpleRamp6" parent="CombatPrototype/SimpleRamp6" instance=ExtResource("11_paa45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="RespawnPoint" parent="CombatPrototype" instance=ExtResource("12_axl34")]
+transform = Transform3D(0.880701, 0, -0.473673, 0, 1, 0, 0.473673, 0, 0.880701, -5, -0.435039, 15)
+
+[node name="RespawnPoint2" parent="CombatPrototype" instance=ExtResource("12_axl34")]
+transform = Transform3D(-0.880701, 0, 0.473673, 0, 1, 0, -0.473673, 0, -0.880701, 5.67627, -0.43504, -15.4341)
 
 [node name="OutOfBoundsHurtBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33.1124, 0)

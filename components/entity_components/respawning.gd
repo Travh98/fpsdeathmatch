@@ -20,8 +20,14 @@ func on_death():
 	# Delay respawning
 	await get_tree().create_timer(respawn_delay).timeout
 	
-	# Reset position in the world
-	mob.global_position = Vector3.ZERO
+	respawn()
+
+
+func respawn():
+	# Move player to a respawn point
+	var respawn_spot: Node3D = LevelMgr.get_respawn_spot()
+	mob.global_position = respawn_spot.global_position
+	mob.global_rotation = respawn_spot.global_rotation
 	
 	# Restore health
 	health_component.full_heal()

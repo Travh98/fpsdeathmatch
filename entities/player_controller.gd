@@ -16,6 +16,7 @@ extends Node
 @onready var sprint: Sprint = $Sprint
 @onready var player_camera_mgr: PlayerCameraMgr = $PlayerCameraMgr
 @onready var use_equipped_item: UseEquippedItem = $UseEquippedItem
+@onready var respawning: Respawning = $Respawning
 ## Timer for allowing player to jump slightly after stepping off a platform
 @onready var coyote_timer: Timer = $CoyoteTimer
 
@@ -74,6 +75,10 @@ func _ready():
 	use_equipped_item.eye_cast = eye_cast
 	use_equipped_item.hitbox_cast = hitbox_cast
 	use_equipped_item.hand_spot = hand_spot
+	
+	# On spawning, move to a spawn point
+	respawning.respawn.call_deferred()
+	
 
 
 func _input(event):

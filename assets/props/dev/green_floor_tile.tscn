@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds3od2axr315m"]
+
+[ext_resource type="Texture2D" uid="uid://dmukolwc3rjex" path="res://assets/textures/kenney_prototype_textures/green/texture_08.png" id="1_1qd38"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3ldd"]
+albedo_texture = ExtResource("1_1qd38")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rrqxf"]
+material = SubResource("StandardMaterial3D_e3ldd")
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_46lwt"]
+size = Vector3(5, 1, 5)
+
+[node name="GreenFloorTile" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rrqxf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_46lwt")

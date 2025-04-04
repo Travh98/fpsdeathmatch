@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://csix6vkcxobq8"]
+
+[ext_resource type="PackedScene" uid="uid://ds3od2axr315m" path="res://assets/props/dev/green_floor_tile.tscn" id="1_mc8qb"]
+[ext_resource type="Script" uid="uid://bo3rsae4e3rob" path="res://entities/level_entities/respawn_point.gd" id="1_rrqxf"]
+[ext_resource type="PackedScene" uid="uid://cbf86ogudnhaq" path="res://components/location_indicator.tscn" id="2_e3ldd"]
+
+[node name="RespawnPoint" type="Node3D"]
+script = ExtResource("1_rrqxf")
+
+[node name="GreenFloorTile" parent="." instance=ExtResource("1_mc8qb")]
+
+[node name="SpawnSpot" parent="." instance=ExtResource("2_e3ldd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = null
+
+[node name="OccupiedRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, 0)
+target_position = Vector3(0, -2, 0)

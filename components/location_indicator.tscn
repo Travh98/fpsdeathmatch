@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbf86ogudnhaq"]
+
+[ext_resource type="Script" uid="uid://il5rwoklw6se" path="res://components/location_indicator.gd" id="1_hjtpj"]
+[ext_resource type="Material" uid="uid://ccr483i5plgo5" path="res://assets/materials/dev_green_transparent.material" id="2_7o3ol"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7x601"]
+material = ExtResource("2_7o3ol")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y58su"]
+material = ExtResource("2_7o3ol")
+top_radius = 0.01
+bottom_radius = 0.1
+height = 0.5
+radial_segments = 8
+rings = 2
+
+[node name="LocationIndicator" type="Node3D"]
+script = ExtResource("1_hjtpj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_7x601")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 0, -0.400593)
+mesh = SubResource("CylinderMesh_y58su")

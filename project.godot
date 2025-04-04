@@ -24,6 +24,7 @@ ServerPingRpcs="*res://components/server_rpcs/ServerPingRpcs.gd"
 ServerSpawningRpcs="*res://components/server_rpcs/ServerSpawningRpcs.gd"
 ServerDamageRpcs="*res://components/server_rpcs/ServerDamageRpcs.gd"
 ServerPlayerDataRpcs="*res://components/server_rpcs/ServerPlayerDataRpcs.gd"
+LevelMgr="*res://components/level_mgr.tscn"
 
 [editor_plugins]
 
