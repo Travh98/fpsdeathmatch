@@ -37,6 +37,17 @@ func _ready():
 	esc_menu.visible = false
 
 
+func _process(delta: float):
+	# When you press tab, do the opposite of your show player data setting
+	# If its not showing, show it, else hide it if its always showing
+	if Input.is_action_pressed("game_details"):
+		if not player_data_view.visible:
+			player_data_view.visible = not ClientGlobals.do_show_player_data
+			
+	if Input.is_action_just_released("game_details"):
+		player_data_view.visible = ClientGlobals.do_show_player_data
+
+
 func on_start_menu_host_game(port: int):
 	gui_host_game.emit(port)
 	hide_start_menu()

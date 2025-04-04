@@ -18,8 +18,12 @@ func _ready():
 	on_volume_changed(volume_slider.value)
 	
 	show_debug_colliders.toggled.connect(on_debug_colliders_toggled)
+	
 	show_console_log.toggled.connect(on_show_console_log_toggled)
+	on_show_console_log_toggled(show_console_log.button_pressed)
+	
 	show_player_data.toggled.connect(on_show_player_data_toggled)
+	on_show_player_data_toggled(show_player_data.button_pressed)
 	
 	disconnect_button.pressed.connect(func(): disconnect_from_server.emit())
 
