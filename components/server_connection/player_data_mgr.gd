@@ -76,10 +76,14 @@ func handle_update_player_data_request(peer_id: int, data_key: String, data_valu
 		push_warning("Missing data key for updating player data")
 		return
 	
+	print("Updated data on server")
 	# Update our local dictionary of all of the player's state
 	players_data[peer_id][data_key] = data_value
 	
 	on_players_data_updated(peer_id, data_key)
+	
+	# Tell clients to update their data
+	ServerPlayerDataRpcs.player_data_updated.rpc(peer_id, data_key, data_value)
 
 
 ## Called when players_data dictionary is updated.
