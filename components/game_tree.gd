@@ -47,6 +47,7 @@ func _ready():
 		player_data_mgr.send_all_player_data_to_peer)
 	
 	ServerPlayerAnimsRpcs.player_shot.connect(players_mgr.on_player_shot)
+	ServerPlayerAnimsRpcs.player_reload.connect(players_mgr.on_player_reload)
 	
 	player_data_mgr.player_name_updated.connect(players_mgr.update_player_name)
 	

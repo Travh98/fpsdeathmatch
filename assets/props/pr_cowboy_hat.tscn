@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://boooqqa24jau5"]
+
+[ext_resource type="PackedScene" uid="uid://dgvfebk5u66er" path="res://assets/props/CowboyHat.glb" id="1_dgw27"]
+
+[node name="CowboyHat" instance=ExtResource("1_dgw27")]

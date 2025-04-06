@@ -26,6 +26,7 @@ func use_primary(eye_cast: RayCast3D, hitbox_cast: RayCast3D):
 		reloading_fx()
 		reloading_cooldown.reload()
 		ammo.reload_magazine()
+		ServerPlayerAnimsRpcs.on_player_reload.rpc_id(1, int(mob.name))
 		return
 	
 	if not reloading_cooldown.is_reloaded():
