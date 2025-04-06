@@ -46,6 +46,8 @@ func _ready():
 	ServerPlayerDataRpcs.send_all_data_to_peer.connect(
 		player_data_mgr.send_all_player_data_to_peer)
 	
+	ServerPlayerAnimsRpcs.player_shot.connect(players_mgr.on_player_shot)
+	
 	player_data_mgr.player_name_updated.connect(players_mgr.update_player_name)
 	
 	# Update health of players when server says their health changed

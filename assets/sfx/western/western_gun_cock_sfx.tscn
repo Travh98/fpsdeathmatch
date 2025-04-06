@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://mygsbtsc7bod"]
+
+[ext_resource type="Script" uid="uid://c28fgp061itwn" path="res://components/random_sfx.gd" id="1_ylt86"]
+[ext_resource type="AudioStream" uid="uid://df7abxdfqp8o5" path="res://assets/sfx/western/western_gun_cock1.wav" id="2_luffg"]
+[ext_resource type="AudioStream" uid="uid://c73rsgoocee2f" path="res://assets/sfx/western/western_gun_cock2.wav" id="3_kqpox"]
+[ext_resource type="AudioStream" uid="uid://btsla0wcc74t1" path="res://assets/sfx/western/western_gun_cock3.wav" id="4_rxjfo"]
+
+[node name="WesternGunCockSfx" type="Node3D"]
+script = ExtResource("1_ylt86")
+metadata/_custom_type_script = "uid://c28fgp061itwn"
+
+[node name="WesternGunCock1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_luffg")
+
+[node name="WesternGunCock2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_kqpox")
+
+[node name="WesternGunCock3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_rxjfo")

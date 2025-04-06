@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://u32xsbc11mpp"]
+
+[ext_resource type="Script" uid="uid://c28fgp061itwn" path="res://components/random_sfx.gd" id="1_qfr2l"]
+[ext_resource type="AudioStream" uid="uid://cmmwqbs1gyb5p" path="res://assets/sfx/western/western_gunshot1.wav" id="2_e4ag6"]
+[ext_resource type="AudioStream" uid="uid://bk8w7i8jwn7qc" path="res://assets/sfx/western/western_gunshot2.wav" id="3_oqb2e"]
+[ext_resource type="AudioStream" uid="uid://ru4qyebbfvs7" path="res://assets/sfx/western/western_gunshot3.wav" id="4_ir4by"]
+
+[node name="WesternGunshotSfx" type="Node3D"]
+script = ExtResource("1_qfr2l")
+
+[node name="WesternShot1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_e4ag6")
+
+[node name="WesternShot2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_oqb2e")
+
+[node name="WesternShot3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ir4by")

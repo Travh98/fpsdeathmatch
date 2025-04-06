@@ -1,25 +1,177 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm6xg2mfckbov"]
+[gd_scene load_steps=16 format=3 uid="uid://bm6xg2mfckbov"]
 
 [ext_resource type="PackedScene" uid="uid://hfcf71x4or3a" path="res://assets/weapons/pr_revolver.tscn" id="1_gfdo5"]
 [ext_resource type="Script" uid="uid://8rwg3snx0sgj" path="res://entities/weapons/revolver.gd" id="1_xh4u4"]
 [ext_resource type="Script" uid="uid://cx3vg8nfrvbhw" path="res://components/weapon/ammo.gd" id="3_b33tj"]
 [ext_resource type="Script" uid="uid://yu80v7rujy7f" path="res://components/weapon/ranged_damage.gd" id="4_b33tj"]
+[ext_resource type="Script" uid="uid://3tbpror6kpwm" path="res://components/weapon/shoot_cooldown.gd" id="5_5qii8"]
 [ext_resource type="PackedScene" uid="uid://cknog6tqams0o" path="res://entities/weapons/muzzle_flash.tscn" id="5_srtrr"]
+[ext_resource type="Script" uid="uid://jsyani8knua8" path="res://components/weapon/rotate_revolver_cylinder.gd" id="6_edovi"]
+[ext_resource type="PackedScene" uid="uid://ded6mpfb4kx1b" path="res://entities/weapons/bullet_tracer.tscn" id="6_pgs2m"]
+[ext_resource type="Script" uid="uid://bi5c7xtv34isd" path="res://components/weapon/reloading_cooldown.gd" id="7_35upk"]
+[ext_resource type="PackedScene" uid="uid://u32xsbc11mpp" path="res://assets/sfx/western/western_gunshot_sfx.tscn" id="7_lu5c4"]
+[ext_resource type="PackedScene" uid="uid://mygsbtsc7bod" path="res://assets/sfx/western/western_gun_cock_sfx.tscn" id="10_auwpd"]
+
+[sub_resource type="Animation" id="Animation_edovi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver/RevolverRig/Skeleton3D/RevolverHammer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.470349, -2.6752e-07, 1.99377e-07)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Revolver/RevolverRig/Skeleton3D/RevolverCylinder/RevolverCylinder:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5qii8"]
+resource_name = "shoot_and_recock"
+length = 0.56
+step = 0.005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.005, 0.015, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.611616, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Revolver/RevolverRig/Skeleton3D/RevolverHammer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.005, 0.35, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.470349, -2.6752e-07, 1.99377e-07), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.470349, -2.6752e-07, 1.99377e-07)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WesternGunCockSfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sound"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_35upk"]
+resource_name = "reload_anim"
+length = 2.0
+step = 0.005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.205, 0.395, 0.595, 0.79, 1.6, 1.905, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.34705, 0, 0), Vector3(1.6467, 0, 0), Vector3(1.39611, 0, 0), Vector3(-0.75023, 0, 0), Vector3(-0.773809, 0, 0), Vector3(0.590585, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.205, 0.395, 0.595, 0.79, 1.6, 1.905, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.0943116, -0.114262), Vector3(0, 0.0417148, -0.114262), Vector3(0, -0.204946, -0.155977), Vector3(0, -0.0779884, -0.0707335), Vector3(0, -0.081253, -0.0424401), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Revolver/RevolverRig/Skeleton3D/RevolverCylinder/RevolverCylinder:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.7, 1.805),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.08149, 0, 0), Vector3(1.08149, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_auwpd"]
+_data = {
+&"RESET": SubResource("Animation_edovi"),
+&"reload_anim": SubResource("Animation_35upk"),
+&"shoot_and_recock": SubResource("Animation_5qii8")
+}
 
 [node name="Revolver" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_xh4u4")
 
 [node name="Revolver" parent="." instance=ExtResource("1_gfdo5")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="RevolverHammer" parent="Revolver/RevolverRig/Skeleton3D" index="0"]
-transform = Transform3D(0.00686619, 1.34476e-11, -7.46338e-09, -7.46037e-10, 0.0120249, -0.0141493, 1.45715e-09, 0.00609319, 0.0279237, 3.51932e-05, 0.112362, 0.0552933)
+transform = Transform3D(0.00686619, -1.05333e-09, -7.46505e-09, 1.2203e-09, 0.0120167, 0.0141869, 1.21643e-09, -0.00610936, 0.0279047, 3.51932e-05, 0.112362, 0.0552933)
 
 [node name="Cube_004" parent="Revolver/RevolverRig/Skeleton3D" index="1"]
 transform = Transform3D(0.058854, -2.64698e-23, 0, 3.30872e-23, 0.0588541, 0, 1.32349e-23, 0, 0.058854, -2.58194e-16, -0.00836527, 0.00459307)
 
 [node name="RevolverCylinder" parent="Revolver/RevolverRig/Skeleton3D" index="2"]
 transform = Transform3D(0.0326766, 7.25546e-18, -7.31043e-18, -7.25548e-18, -0.000246506, -0.0326757, -7.3104e-18, 0.0326757, -0.000246506, 6.09943e-05, 0.156241, 0.123132)
+
+[node name="RevolverCylinder" parent="Revolver/RevolverRig/Skeleton3D/RevolverCylinder" index="0"]
+transform = Transform3D(0.999196, 0.000302481, 0.0400957, -0.000302482, 1, -6.0238e-06, -0.0400957, -6.1093e-06, 0.999196, 0, 0, 0)
 
 [node name="Ammo" type="Node" parent="."]
 script = ExtResource("3_b33tj")
@@ -30,7 +182,32 @@ ammo_in_reserve = 1000
 [node name="RangedDamage" type="Node" parent="."]
 script = ExtResource("4_b33tj")
 
+[node name="ShootCooldown" type="Node" parent="."]
+script = ExtResource("5_5qii8")
+cooldown_time = 0.5
+
+[node name="RotateRevolverCylinder" type="Node" parent="." node_paths=PackedStringArray("cylinder")]
+script = ExtResource("6_edovi")
+cylinder = NodePath("../Revolver/RevolverRig/Skeleton3D/RevolverCylinder")
+
+[node name="ReloadingCooldown" type="Node" parent="."]
+script = ExtResource("7_35upk")
+reload_time = 2.0
+
 [node name="MuzzleFlash" parent="." instance=ExtResource("5_srtrr")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.187494, -0.29254)
+
+[node name="BulletTracer" parent="." instance=ExtResource("6_pgs2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.188716, -0.294983)
+travel_time = 0.01
+
+[node name="WesternGunshotSfx" parent="." instance=ExtResource("7_lu5c4")]
+
+[node name="WesternGunCockSfx" parent="." instance=ExtResource("10_auwpd")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_auwpd")
+}
 
 [editable path="Revolver"]

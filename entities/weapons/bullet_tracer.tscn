@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ded6mpfb4kx1b"]
+
+[ext_resource type="Script" uid="uid://doh1fyfh1pi36" path="res://entities/weapons/bullet_tracer.gd" id="1_wwa5c"]
+[ext_resource type="Material" uid="uid://ciswcr845emvw" path="res://assets/materials/bullet_tracer.material" id="2_3hphx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wwa5c"]
+material = ExtResource("2_3hphx")
+radius = 0.02
+height = 0.8
+
+[node name="BulletTracer" type="Node3D"]
+script = ExtResource("1_wwa5c")
+
+[node name="BulletNode" type="Node3D" parent="."]
+
+[node name="FakeBulletMesh" type="MeshInstance3D" parent="BulletNode"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_wwa5c")
+skeleton = NodePath("../..")
