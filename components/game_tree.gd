@@ -4,6 +4,7 @@ extends Node
 ## Connects items in the game tree
 
 @onready var gui_mgr: GuiMgr = $GuiMgr
+@onready var start_connect_menu: StartConnectMenu = $GuiMgr/StartConnectMenu
 @onready var server_interface: ServerInterface = $ServerInterface
 @onready var enet_server = $ServerInterface/EnetServer
 @onready var server_connector: ServerConnector = $ServerInterface/ServerConnector
@@ -58,3 +59,13 @@ func _ready():
 	
 	# Share ping with this client's system
 	ping_mgr.ping_calculated.connect(func(ping: float): ClientGlobals.ping_calculated.emit(ping))
+	
+	handle_startup_args()
+
+
+func handle_startup_args():
+	var args: PackedStringArray = OS.get_cmdline_args()
+	if "--server" in args:
+		start_connect_menu.on_host_server()
+	if "--client" in args:
+		start_connect_menu.on_join_server()

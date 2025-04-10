@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://charavp71pvq6"]
+[gd_scene load_steps=35 format=3 uid="uid://charavp71pvq6"]
 
 [ext_resource type="Script" uid="uid://c4r6dyb2wlxwa" path="res://components/entity_components/sprint.gd" id="1_e4p34"]
 [ext_resource type="PackedScene" uid="uid://blc5hnsk32uqd" path="res://assets/characters/godoot_man_player_model.tscn" id="1_oprnr"]
@@ -20,8 +20,19 @@
 [ext_resource type="Script" uid="uid://cumtkbxpfad37" path="res://components/entity_components/respawning.gd" id="15_cgp7q"]
 [ext_resource type="Script" uid="uid://dk6i2dgov4gy8" path="res://components/entity_components/hit_box_manager.gd" id="16_1n8aq"]
 [ext_resource type="PackedScene" uid="uid://bw66n55p0655k" path="res://ui/player_hud.tscn" id="16_oprnr"]
+[ext_resource type="Script" uid="uid://de74lsditbc4l" path="res://components/entity_components/particles_on_hit.gd" id="17_fruft"]
+[ext_resource type="Script" uid="uid://dsbv3x7w8lw76" path="res://components/entity_components/spawn_remains_on_death.gd" id="18_rcwxb"]
+[ext_resource type="PackedScene" uid="uid://b2dme5y7yjg08" path="res://entities/godoot_ball.tscn" id="19_d2i2q"]
+[ext_resource type="Script" uid="uid://cujiwmcwo606o" path="res://components/entity_components/disable_collisions_on_death.gd" id="20_mdqif"]
 [ext_resource type="PackedScene" uid="uid://b6qydmka43s6f" path="res://components/entity_components/healthbar_3d.tscn" id="21_28s6d"]
+[ext_resource type="Script" uid="uid://bqrtl08uc5cyg" path="res://components/entity_components/hide_player_model_on_death.gd" id="21_egchw"]
 [ext_resource type="PackedScene" uid="uid://dexa6jq6wkuuy" path="res://components/entity_components/step_checker.tscn" id="22_cicqb"]
+[ext_resource type="PackedScene" uid="uid://cf4lpc4yr3db7" path="res://assets/particles/confetti_burst.tscn" id="23_hj0ki"]
+[ext_resource type="Script" uid="uid://c28fgp061itwn" path="res://components/random_sfx.gd" id="25_ib8tg"]
+[ext_resource type="AudioStream" uid="uid://cmuhpggaxdugk" path="res://assets/sfx/player_ouches/oof1.wav" id="26_rcwxb"]
+[ext_resource type="AudioStream" uid="uid://bly5j1s0t76al" path="res://assets/sfx/player_ouches/oof2.wav" id="27_d2i2q"]
+[ext_resource type="AudioStream" uid="uid://geemvy2kcaqk" path="res://assets/sfx/player_ouches/oof3.wav" id="28_mdqif"]
+[ext_resource type="AudioStream" uid="uid://c2d78lsfcct85" path="res://assets/sfx/player_ouches/oof4.wav" id="29_egchw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_merdl"]
 radius = 0.235881
@@ -32,23 +43,19 @@ radius = 0.235881
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="GodootManPlayerModel/GodootManRig" index="0"]
-bones/0/position = Vector3(0, 0.987322, -0.0501)
-bones/5/rotation = Quaternion(3.82851e-08, 0.861885, -0.507103, -4.7605e-07)
-bones/6/rotation = Quaternion(-3.64461e-07, -0.540308, 0.841467, -1.05202e-07)
-bones/17/rotation = Quaternion(0.986182, 0.0243177, 0.00404332, -0.163822)
-bones/18/rotation = Quaternion(0.329743, 0.00812753, 0.023273, 0.943749)
-bones/19/rotation = Quaternion(-0.528688, 1.05255e-07, -6.10145e-08, 0.848816)
-bones/22/rotation = Quaternion(0.862329, -0.0212659, 0.0124681, 0.505748)
-bones/23/rotation = Quaternion(0.161526, -0.00397927, -0.0243282, 0.98656)
-bones/24/rotation = Quaternion(-0.526787, -1.21227e-07, 5.68407e-08, 0.849998)
-bones/25/rotation = Quaternion(-4.31393e-08, 0.964307, -0.264788, -7.28031e-08)
-bones/26/rotation = Quaternion(-0.681868, 0.681868, -0.187233, -0.187233)
+bones/0/position = Vector3(0, 0.91488, -0.0501)
+bones/17/rotation = Quaternion(0.882645, 0.0217667, -0.0115716, 0.469394)
+bones/18/rotation = Quaternion(0.601703, 0.0148345, 0.0196884, 0.798339)
+bones/19/rotation = Quaternion(-0.410942, 2.29307e-07, -3.77754e-08, 0.911661)
+bones/22/rotation = Quaternion(0.999285, -0.0246413, -0.000710304, -0.0286547)
+bones/23/rotation = Quaternion(0.077757, -0.00191359, -0.0245771, 0.996668)
+bones/24/rotation = Quaternion(-0.510036, -1.18721e-07, 5.92046e-08, 0.860153)
 
 [node name="Godoot" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="0"]
-transform = Transform3D(-1, -1.25736e-09, 6.27832e-07, 1.63208e-07, 0.965098, 0.261887, -6.06249e-07, 0.261887, -0.965098, -3.96813e-10, 1.6308, 0.165281)
+transform = Transform3D(-1, -1.25736e-09, 6.27832e-07, 1.18699e-07, 0.981585, 0.191027, -6.1651e-07, 0.191027, -0.981584, -3.96813e-10, 1.55835, 0.165504)
 
 [node name="GodootHorns" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="1"]
-transform = Transform3D(-1, -1.25736e-09, 6.27832e-07, 1.63208e-07, 0.965098, 0.261887, -6.06249e-07, 0.261887, -0.965098, -3.96813e-10, 1.6308, 0.165281)
+transform = Transform3D(-1, -1.25736e-09, 6.27832e-07, 1.18699e-07, 0.981585, 0.191027, -6.1651e-07, 0.191027, -0.981584, -3.96813e-10, 1.55835, 0.165504)
 
 [node name="HeadLookAt" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="5"]
 target_node = NodePath("../../../../Head/HeadLookAtIkTarget")
@@ -60,37 +67,43 @@ target_node = NodePath("../../../../Head/HeadLookAtIkTarget")
 target_node = NodePath("../../../../Head/HandSpot")
 
 [node name="HeadBoneAttach" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="8"]
-transform = Transform3D(1, -1.42109e-13, -1.7053e-13, 5.68434e-14, 0.965621, -0.259954, 2.27374e-13, 0.259954, 0.965621, -4.68288e-14, 1.63386, 0.165451)
+transform = Transform3D(1, -1.42109e-13, -2.55795e-13, -5.68434e-14, 0.981965, -0.189061, 2.84217e-13, 0.189062, 0.981965, -4.68288e-14, 1.56142, 0.165451)
 
 [node name="ChestBone" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="9"]
-transform = Transform3D(1, 3.43439e-18, -4.1046e-18, -4.1046e-18, 0.984318, -0.176405, 3.43439e-18, 0.176405, 0.984317, 0, 1.38542, -0.00490002)
+transform = Transform3D(1, 3.43439e-18, -4.1046e-18, -4.1046e-18, 0.984318, -0.176405, 3.43439e-18, 0.176405, 0.984317, 0, 1.31298, -0.00490003)
 
 [node name="HipsBone" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="10"]
-transform = Transform3D(1, 0, 0, 0, 0.968328, -0.249681, 0, 0.249681, 0.968328, 0, 0.987322, -0.0501)
+transform = Transform3D(1, 0, 0, 0, 0.968328, -0.249681, 0, 0.249681, 0.968328, 0, 0.91488, -0.0501)
 
 [node name="ThighBoneL" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="11"]
-transform = Transform3D(0.998785, 0.0492881, 7.37516e-06, 0.0411809, -0.834581, 0.549345, 0.0270823, -0.548676, -0.835598, 0.12176, 1.02169, 0.00140001)
+transform = Transform3D(0.998785, 0.0492878, 7.22335e-06, 0.0368908, -0.747469, -0.663272, -0.0326858, 0.662465, -0.748381, 0.12176, 0.949246, 0.0014)
 
 [node name="ThighBoneR" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="12"]
-transform = Transform3D(0.998785, -0.0492878, -7.18238e-06, -0.0340425, -0.689743, -0.723255, 0.0356426, 0.722375, -0.690584, -0.12176, 1.02169, 0.00140001)
+transform = Transform3D(0.998785, -0.0492881, -7.41311e-06, -0.0469411, -0.951272, 0.30476, -0.015028, -0.304388, -0.952431, -0.12176, 0.949246, 0.0014)
 
 [node name="ShinBoneL" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="13"]
-transform = Transform3D(1, 1.26391e-07, -3.59593e-07, 3.73386e-07, -0.311662, 0.950194, 5.9681e-09, -0.950194, -0.311664, 0.14245, 0.671343, -0.228926)
+transform = Transform3D(1, -1.35095e-07, 9.36143e-08, -1.62634e-07, -0.843764, 0.536716, 1.09335e-08, -0.536718, -0.843763, 0.14245, 0.635469, 0.279493)
 
 [node name="ShinBoneR" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="14"]
-transform = Transform3D(1, 2.61332e-07, 4.58818e-07, 4.46918e-07, -0.885174, -0.465262, 2.84748e-07, 0.46526, -0.885175, -0.14245, 0.732144, 0.304643)
+transform = Transform3D(1, 5.14194e-09, 2.57085e-07, -1.12914e-07, -0.89364, 0.448784, 2.31753e-07, -0.448784, -0.893642, -0.14245, 0.549916, -0.126378)
 
 [node name="UpperArmL" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="15"]
-transform = Transform3D(-0.00284319, 0.999905, 0.0134594, -0.999995, -0.00285686, 0.000985468, 0.00102388, -0.0134566, 0.999909, 0.166955, 1.52539, 0.000454813)
+transform = Transform3D(-0.00284319, 0.999905, 0.0134594, -0.999995, -0.00285686, 0.000985468, 0.00102388, -0.0134566, 0.999909, 0.166955, 1.45295, 0.000454813)
 
 [node name="UpperArmR" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="16"]
-transform = Transform3D(-0.00284319, -0.999905, -0.0134594, 0.999995, -0.00285686, 0.000985468, -0.00102388, -0.0134566, 0.999909, -0.166955, 1.52539, 0.000454813)
+transform = Transform3D(-0.00284319, -0.999905, -0.0134594, 0.999995, -0.00285686, 0.000985468, -0.00102388, -0.0134566, 0.999909, -0.166955, 1.45295, 0.000454813)
 
 [node name="ForearmL" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="17"]
-transform = Transform3D(0.0244154, 0.999568, -0.0163344, -0.999197, 0.0238805, -0.0321676, -0.0317636, 0.0171066, 0.999349, 0.51619, 1.52439, -0.00424515)
+transform = Transform3D(0.0244154, 0.999568, -0.0163344, -0.999197, 0.0238805, -0.0321676, -0.0317636, 0.0171066, 0.999349, 0.51619, 1.45195, -0.00424515)
 
 [node name="ForearmR" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="18"]
-transform = Transform3D(0.0244154, -0.999568, 0.0163344, 0.999197, 0.0238805, -0.0321676, 0.0317636, 0.0171066, 0.999349, -0.51619, 1.52439, -0.00424515)
+transform = Transform3D(0.0244154, -0.999568, 0.0163344, 0.999197, 0.0238805, -0.0321676, 0.0317636, 0.0171066, 0.999349, -0.51619, 1.45195, -0.00424515)
+
+[node name="FootBoneL" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="19"]
+transform = Transform3D(1, -2.79197e-07, 4.0992e-07, -1.53238e-07, -0.960936, -0.276774, 4.75634e-07, 0.276772, -0.960937, 0.14245, 0.27309, 0.0489837)
+
+[node name="FootBoneR" parent="GodootManPlayerModel/GodootManRig/Skeleton3D" index="20"]
+transform = Transform3D(1, -2.03851e-07, -1.36787e-07, -2.47599e-07, -0.822475, -0.568802, 3.15086e-09, 0.568804, -0.822475, -0.14245, 0.166115, -0.319122)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -175,6 +188,22 @@ metadata/_custom_type_script = "uid://cumtkbxpfad37"
 script = ExtResource("16_1n8aq")
 hitbox_parent = NodePath("../../GodootManPlayerModel/GodootManRig/Skeleton3D")
 
+[node name="ParticlesOnHit" type="Node" parent="PlayerController" node_paths=PackedStringArray("particles")]
+script = ExtResource("17_fruft")
+particles = NodePath("../../ConfettiBurst")
+
+[node name="SpawnRemainsOnDeath" type="Node" parent="PlayerController"]
+script = ExtResource("18_rcwxb")
+remains = ExtResource("19_d2i2q")
+
+[node name="DisableCollisionsOnDeath" type="Node" parent="PlayerController" node_paths=PackedStringArray("collision")]
+script = ExtResource("20_mdqif")
+collision = NodePath("../../CollisionShape3D")
+
+[node name="HidePlayerModelOnDeath" type="Node" parent="PlayerController" node_paths=PackedStringArray("player_models")]
+script = ExtResource("21_egchw")
+player_models = [NodePath("../../GodootManPlayerModel"), NodePath("../../Head")]
+
 [node name="CoyoteTimer" type="Timer" parent="PlayerController"]
 wait_time = 0.5
 
@@ -213,6 +242,26 @@ text = "Peer ID"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="StepChecker" parent="." instance=ExtResource("22_cicqb")]
+
+[node name="ConfettiBurst" parent="." instance=ExtResource("23_hj0ki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04577, 0)
+
+[node name="OuchSfx" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65589, -0.451849)
+script = ExtResource("25_ib8tg")
+metadata/_custom_type_script = "uid://c28fgp061itwn"
+
+[node name="OofSfx" type="AudioStreamPlayer3D" parent="OuchSfx"]
+stream = ExtResource("26_rcwxb")
+
+[node name="OofSfx2" type="AudioStreamPlayer3D" parent="OuchSfx"]
+stream = ExtResource("27_d2i2q")
+
+[node name="OofSfx3" type="AudioStreamPlayer3D" parent="OuchSfx"]
+stream = ExtResource("28_mdqif")
+
+[node name="OofSfx4" type="AudioStreamPlayer3D" parent="OuchSfx"]
+stream = ExtResource("29_egchw")
 
 [editable path="GodootManPlayerModel"]
 [editable path="Networked/NetPositionLerper"]

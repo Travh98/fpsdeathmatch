@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bw66n55p0655k"]
+[gd_scene load_steps=12 format=3 uid="uid://bw66n55p0655k"]
 
 [ext_resource type="Script" uid="uid://djh8wx3uk2sbt" path="res://ui/player_hud.gd" id="1_fa7lo"]
 [ext_resource type="PackedScene" uid="uid://462ek3s4gxyu" path="res://ui/fps_counter.tscn" id="2_awr13"]
 [ext_resource type="Texture2D" uid="uid://duosndst2e6pc" path="res://assets/textures/tiny_crosshair.png" id="2_w5gje"]
 [ext_resource type="Script" path="res://ui/ping_counter.gd" id="3_18snh"]
 [ext_resource type="PackedScene" uid="uid://cbsslne0c6wgq" path="res://ui/killfeed_hud.tscn" id="5_7pawb"]
+[ext_resource type="PackedScene" uid="uid://21q5ytd883nv" path="res://ui/deathmatch_win_screen.tscn" id="6_sjha8"]
+[ext_resource type="PackedScene" uid="uid://d1o6wao06v81n" path="res://ui/damage_vignette.tscn" id="7_q84jv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ia7ii"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 0.588235)
@@ -237,3 +239,9 @@ offset_left = -400.0
 offset_top = -150.0
 offset_bottom = 150.0
 grow_horizontal = 0
+
+[node name="DeathmatchWinScreen" parent="." instance=ExtResource("6_sjha8")]
+layout_mode = 1
+
+[node name="DamageVignette" parent="." instance=ExtResource("7_q84jv")]
+layout_mode = 1

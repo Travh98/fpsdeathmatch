@@ -24,6 +24,12 @@ func reload():
 	ServerPlayerAnimsRpcs.on_player_reload.rpc_id(1, int(mob.name))
 
 
+func reset():
+	ammo.reload_magazine()
+	if anim_player.is_playing():
+		anim_player.stop()
+
+
 func use_primary(eye_cast: RayCast3D, hitbox_cast: RayCast3D):
 	if anim_player.is_playing():
 		return

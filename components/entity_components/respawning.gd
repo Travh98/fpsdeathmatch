@@ -3,6 +3,9 @@ extends Node
 
 ## Allows respawning on death
 
+signal respawned()
+
+
 @onready var mob: Node3D = $"../.."
 @onready var health_component: HealthComponent = $"../../HealthComponent"
 
@@ -38,4 +41,7 @@ func respawn():
 	health_component.full_heal()
 	
 	# Reset player data
-	ServerPlayerDataRpcs.request_update_player_data.rpc_id(1, multiplayer.get_unique_id(), "last_hurt_by", str(0))
+	ServerPlayerDataRpcs.request_update_player_data.rpc_id(1, 
+		multiplayer.get_unique_id(), PlayerDataMgr.PlayerDataKeys.PD_LASTHURTBY, str(0))
+	
+	respawned.emit()

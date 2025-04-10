@@ -14,6 +14,7 @@ func _ready():
 	pass
 
 
+## Spawns a new kill feed label
 func on_new_kill(killer: String, killed: String):
 	if kill_reports_array.size() >= 3:
 		despawn_label()

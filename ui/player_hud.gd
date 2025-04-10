@@ -12,11 +12,13 @@ extends Control
 @onready var stamina_bar: ProgressBar = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StaminaBar
 @onready var speed_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/StatsContainer/SpeedLabel
 @onready var interact_text: Label = $HBoxContainer2/VBoxContainer/InteractText
+@onready var damage_vignette: DamageVignette = $DamageVignette
 
 var last_inv_slot_label: Label
 
 
 func _ready():
+	health_component.damage_taken.connect(damage_vignette.flash_vignette)
 	pass
 
 

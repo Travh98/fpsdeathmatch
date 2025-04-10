@@ -34,24 +34,29 @@ func on_player_data_changed():
 			item_list.add_item(str(peer_id), null, false)
 		
 		# Create a row for this peer_id
-		for data_key in playerDataMgr.players_data[peer_id]:
+		for data_key: PlayerDataMgr.PlayerDataKeys in playerDataMgr.players_data[peer_id]:
 			# Ignore some keys
 			if ignore_name_keys:
-				if str(data_key) == "name":
+				if data_key == PlayerDataMgr.PlayerDataKeys.PD_NAME:
 					item_list.add_item(str(playerDataMgr.players_data[peer_id][data_key]), null, false)
 					continue
 			
 			# Special processing for some values
-			if str(data_key) == "last_hurt_by":
+			if data_key == PlayerDataMgr.PlayerDataKeys.PD_LASTHURTBY:
 				# Try converting peer_id to display as username
-				item_list.add_item(str(data_key), null, false)
+				item_list.add_item(get_data_key_string(data_key), null, false)
 				var hurt_by_peer_id: int = playerDataMgr.players_data[peer_id][data_key].to_int()
 				if hurt_by_peer_id != 0:
-					var hurt_by_name: String = str(playerDataMgr.players_data[hurt_by_peer_id]["name"])
+					var hurt_by_name: String = str(playerDataMgr.players_data[hurt_by_peer_id][PlayerDataMgr.PlayerDataKeys.PD_NAME])
 					item_list.add_item(hurt_by_name, null, false)
 				else:
 					item_list.add_item("NA", null, false)
 				continue
 			
-			item_list.add_item(str(data_key), null, false)
+			item_list.add_item(get_data_key_string(data_key), null, false)
 			item_list.add_item(str(playerDataMgr.players_data[peer_id][data_key]), null, false)
+
+
+## Get a visually appealing string for the player data key
+func get_data_key_string(key: PlayerDataMgr.PlayerDataKeys) -> String:
+	return str(PlayerDataMgr.PlayerDataKeys.keys()[key]).lstrip("PD_")

@@ -3,6 +3,7 @@ extends Node
 
 signal health_changed(health_value: int)
 signal health_died
+signal health_respawned
 signal damage_taken
 
 @export var health: int = 100 : set = update_health
@@ -29,7 +30,10 @@ func get_health() -> int:
 
 func full_heal():
 	update_health(max_health)
-	ServerPlayerDataRpcs.request_update_player_data.rpc_id(1, multiplayer.get_unique_id(), "hp", str(health))
+	ServerPlayerDataRpcs.request_update_player_data.rpc_id(1, 
+		multiplayer.get_unique_id(), 
+		PlayerDataMgr.PlayerDataKeys.PD_HP, 
+		str(health))
 
 
 func update_health(new_health: int):
@@ -47,6 +51,7 @@ func update_health(new_health: int):
 	
 	# Check if alive
 	if health > 0 and is_dead:
+		health_respawned.emit()
 		is_dead = false
 		#print(get_parent().name, " is no longer dead")
 	

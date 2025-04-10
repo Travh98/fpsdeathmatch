@@ -9,7 +9,7 @@ var respawn_points: Array[RespawnPoint]
 
 func register_respawn_point(respawn_point: RespawnPoint):
 	respawn_points.append(respawn_point)
-	print(respawn_points.size(), " respawn points registered")
+	#print(respawn_points.size(), " respawn points registered")
 
 
 ## Returns the best available respawn spot

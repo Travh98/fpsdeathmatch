@@ -13,7 +13,7 @@ func apply_damage_to_player(peer_id: int, damage: int, damage_sender_peer_id: in
 	if not multiplayer.is_server():
 		return
 	
-	print("Server sees request to hurt peer id: ", peer_id, " for damage: ", damage)
+	#print("Server sees request to hurt peer id: ", peer_id, " for damage: ", damage)
 	server_damage_to_player.emit(peer_id, damage, damage_sender_peer_id)
 	pass
 

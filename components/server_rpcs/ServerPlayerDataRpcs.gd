@@ -3,9 +3,13 @@ extends Node
 ## RPCs for updating Player Data across clients
 
 ## Emits when this client has received a new Player Data update
-signal update_player_data(peer_id: int, data_key: String, data_value: String)
+signal update_player_data(peer_id: int, 
+	data_key: PlayerDataMgr.PlayerDataKeys, data_value: String)
+
 ## Emits when a client requests to update player data
-signal received_player_data_update_request(peer_id: int, data_key: String, data_value: String)
+signal received_player_data_update_request(peer_id: int, 
+	data_key: PlayerDataMgr.PlayerDataKeys, data_value: String)
+
 ## Emitted when client joins late and needs all of the current data
 signal send_all_data_to_peer(peer_id: int)
 
@@ -16,8 +20,8 @@ const MAX_RPC_INPUT_LENGTH: int = 32
 ## Server calls this function on each client.
 ## Tells clients to update their PlayerDataMgr state with this new value.
 @rpc("call_remote")
-func player_data_updated(peer_id: int, data_key: String, data_value: String):
-	if not safety_check(data_key) or not safety_check(data_value):
+func player_data_updated(peer_id: int, data_key: PlayerDataMgr.PlayerDataKeys, data_value: String):
+	if not safety_check(data_value):
 		push_warning("Received unsafe RPC input! Ignoring.")
 		return
 	
@@ -26,8 +30,8 @@ func player_data_updated(peer_id: int, data_key: String, data_value: String):
 
 ## Clients call this function on the server to request to set their player data
 @rpc("any_peer", "call_local", "reliable")
-func request_update_player_data(peer_id: int, data_key: String, data_value: String):
-	if not safety_check(data_key) or not safety_check(data_value):
+func request_update_player_data(peer_id: int, data_key: PlayerDataMgr.PlayerDataKeys, data_value: String):
+	if not safety_check(data_value):
 		push_warning("Received unsafe RPC input! Ignoring.")
 		return
 	

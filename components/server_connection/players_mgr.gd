@@ -43,8 +43,11 @@ func spawn_player_for_host():
 	#print("Adding player character for the host: ", multiplayer.get_unique_id())
 	add_player_character(multiplayer.get_unique_id())
 	
-	print("Host is requesting for their name to be ", ClientGlobals.client_name)
-	ServerPlayerDataRpcs.request_update_player_data.rpc_id(1, multiplayer.get_unique_id(), "name", ClientGlobals.client_name)
+	#print("Host is requesting for their name to be ", ClientGlobals.client_name)
+	ServerPlayerDataRpcs.request_update_player_data.rpc_id(1, 
+		multiplayer.get_unique_id(), 
+		PlayerDataMgr.PlayerDataKeys.PD_NAME, 
+		ClientGlobals.client_name)
 
 
 ## Registers this local player into our player_nodes.
@@ -54,8 +57,11 @@ func spawn_player_for_host():
 func register_local_player(local_player: Node):
 	player_nodes[multiplayer.get_unique_id()] = local_player
 	
-	print(local_player, " is requesting for their name to be ", ClientGlobals.client_name)
-	ServerPlayerDataRpcs.request_update_player_data.rpc_id(1, multiplayer.get_unique_id(), "name", ClientGlobals.client_name)
+	#print(local_player, " is requesting for their name to be ", ClientGlobals.client_name)
+	ServerPlayerDataRpcs.request_update_player_data.rpc_id(1, 
+		multiplayer.get_unique_id(), 
+		PlayerDataMgr.PlayerDataKeys.PD_NAME, 
+		ClientGlobals.client_name)
 	
 	# Since we are joining the server, and there could be players
 	# already in the server, we need to request getting all the data

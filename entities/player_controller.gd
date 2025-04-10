@@ -17,6 +17,7 @@ extends Node
 @onready var player_camera_mgr: PlayerCameraMgr = $PlayerCameraMgr
 @onready var use_equipped_item: UseEquippedItem = $UseEquippedItem
 @onready var respawning: Respawning = $Respawning
+@onready var particles_on_hit: ParticlesOnHit = $ParticlesOnHit
 ## Timer for allowing player to jump slightly after stepping off a platform
 @onready var coyote_timer: Timer = $CoyoteTimer
 
@@ -35,6 +36,7 @@ extends Node
 @onready var hand_spot: Node3D = $"../Head/HandSpot"
 ## Helper for stepping over stairs and bumpy terrain
 @onready var step_checker: StepChecker = $"../StepChecker"
+@onready var ouch_sfx: RandomSfx = $"../OuchSfx"
 
 
 ## The raw input from WASD keys
@@ -56,6 +58,8 @@ func _ready():
 	# Setup and connect nodes
 	coyote_timer.one_shot = true
 	
+	health_component.damage_taken.connect(ouch_sfx.play_sound)
+	
 	# Disable or delete things that don't need to be included
 	# on replicated peers
 	# Also setup things that happen only on replicated peers
@@ -63,7 +67,11 @@ func _ready():
 		player_hud.queue_free()
 		godoot_man_player_model.start_ik()
 		godoot_man_player_model.on_hand_item_held()
+		health_component.damage_taken.connect(particles_on_hit.fire_particles)
 		return
+	
+	# Reload weapon on respawn
+	respawning.respawned.connect(use_equipped_item.reset_item)
 	
 	# Hide the playermodel for this client (so you don't see yourself)
 	godoot_man_player_model.visible = false
@@ -134,7 +142,7 @@ func _physics_process(delta: float) -> void:
 	if health_component.is_dead:
 		# Do not move if dead
 		# But also fall if dead
-		mob.move_and_slide()
+		#mob.move_and_slide()
 		last_frame_position = mob.global_position
 		return
 	
