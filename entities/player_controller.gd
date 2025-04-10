@@ -96,6 +96,8 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("primary"):
 		use_equipped_item.handle_primary()
+	if Input.is_action_just_pressed("reload"):
+		use_equipped_item.handle_reload()
 
 
 func _physics_process(delta: float) -> void:

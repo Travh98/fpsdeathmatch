@@ -54,4 +54,4 @@ func on_hit_taken(vital: HitBox.Vitalness, incoming_dmg: int):
 			pass
 	
 	# Tell the server you want to deal damage to this player.
-	ServerDamageRpcs.apply_damage_to_player.rpc_id(1, mob.name.to_int(), calculated_dmg)
+	ServerDamageRpcs.apply_damage_to_player.rpc_id(1, mob.name.to_int(), calculated_dmg, multiplayer.get_unique_id())

@@ -63,6 +63,47 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_35upk"]
+resource_name = "reload_anim"
+length = 2.0
+step = 0.005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.205, 0.395, 0.595, 0.79, 1.6, 1.905, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.34705, 0, 0), Vector3(1.6467, 0, 0), Vector3(1.39611, 0, 0), Vector3(-0.75023, 0, 0), Vector3(-0.773809, 0, 0), Vector3(0.590585, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.205, 0.395, 0.595, 0.79, 1.6, 1.905, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.0943116, -0.114262), Vector3(0, 0.0417148, -0.114262), Vector3(0, -0.204946, -0.155977), Vector3(0, -0.0779884, -0.0707335), Vector3(0, -0.081253, -0.0424401), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Revolver/RevolverRig/Skeleton3D/RevolverCylinder/RevolverCylinder:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.7, 1.805),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.08149, 0, 0), Vector3(1.08149, 0, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_5qii8"]
 resource_name = "shoot_and_recock"
 length = 0.56
@@ -106,47 +147,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_35upk"]
-resource_name = "reload_anim"
-length = 2.0
-step = 0.005
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.205, 0.395, 0.595, 0.79, 1.6, 1.905, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.34705, 0, 0), Vector3(1.6467, 0, 0), Vector3(1.39611, 0, 0), Vector3(-0.75023, 0, 0), Vector3(-0.773809, 0, 0), Vector3(0.590585, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.205, 0.395, 0.595, 0.79, 1.6, 1.905, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.0943116, -0.114262), Vector3(0, 0.0417148, -0.114262), Vector3(0, -0.204946, -0.155977), Vector3(0, -0.0779884, -0.0707335), Vector3(0, -0.081253, -0.0424401), Vector3(0, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Revolver/RevolverRig/Skeleton3D/RevolverCylinder/RevolverCylinder:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 1.7, 1.805),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.08149, 0, 0), Vector3(1.08149, 0, 0), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_auwpd"]
 _data = {
 &"RESET": SubResource("Animation_edovi"),
@@ -155,20 +155,13 @@ _data = {
 }
 
 [node name="Revolver" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_xh4u4")
 
 [node name="Revolver" parent="." instance=ExtResource("1_gfdo5")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="RevolverHammer" parent="Revolver/RevolverRig/Skeleton3D" index="0"]
-transform = Transform3D(0.00686619, -1.05333e-09, -7.46505e-09, 1.2203e-09, 0.0120167, 0.0141869, 1.21643e-09, -0.00610936, 0.0279047, 3.51932e-05, 0.112362, 0.0552933)
-
-[node name="Cube_004" parent="Revolver/RevolverRig/Skeleton3D" index="1"]
-transform = Transform3D(0.058854, -2.64698e-23, 0, 3.30872e-23, 0.0588541, 0, 1.32349e-23, 0, 0.058854, -2.58194e-16, -0.00836527, 0.00459307)
-
-[node name="RevolverCylinder" parent="Revolver/RevolverRig/Skeleton3D" index="2"]
-transform = Transform3D(0.0326766, 7.25546e-18, -7.31043e-18, -7.25548e-18, -0.000246506, -0.0326757, -7.3104e-18, 0.0326757, -0.000246506, 6.09943e-05, 0.156241, 0.123132)
+transform = Transform3D(0.00686619, -1.05334e-09, -7.46507e-09, 1.22031e-09, 0.0120167, 0.0141869, 1.21643e-09, -0.00610935, 0.0279047, 3.51932e-05, 0.112362, 0.0552933)
 
 [node name="RevolverCylinder" parent="Revolver/RevolverRig/Skeleton3D/RevolverCylinder" index="0"]
 transform = Transform3D(0.999196, 0.000302481, 0.0400957, -0.000302482, 1, -6.0238e-06, -0.0400957, -6.1093e-06, 0.999196, 0, 0, 0)

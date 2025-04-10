@@ -26,6 +26,11 @@ func handle_primary():
 	pass
 
 
+func handle_reload():
+	if hand_spot.get_child(0) is Revolver:
+		var revolver: Revolver = hand_spot.get_child(0)
+		revolver.reload()
+
 func set_hitbox_cast(cast: RayCast3D):
 	hitbox_cast = cast
 	hitbox_cast.collide_with_areas = true

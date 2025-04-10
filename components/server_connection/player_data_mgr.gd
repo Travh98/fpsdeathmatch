@@ -18,7 +18,7 @@ var players_data: Dictionary = {}
 ## Creates a new dictionary entry for this player's data
 func on_player_spawned(peer_id: int):
 	# Store this new player data in the dictionary
-	players_data[peer_id] = {"name": "", "hp": 100, "score": 0}
+	players_data[peer_id] = {"name": "", "hp": 100, "score": 0, "last_hurt_by": ""}
 
 
 func on_player_despawned(_peer_id: int):
@@ -63,6 +63,8 @@ func on_players_data_updated(peer_id: int, data_key: String):
 			player_health_updated.emit(peer_id, int(players_data[peer_id][data_key]))
 		"score":
 			pass
+		"last_hurt_by":
+			pass
 		_:
 			print("Unsupported PlayerDataMgr data updated: ", data_key)
 	
@@ -88,7 +90,7 @@ func send_all_player_data_to_peer(peer_id: int):
 
 
 ## Called by the server after a client requests to damage a player
-func apply_damage_to_player(peer_id: int, damage: int):
+func apply_damage_to_player(peer_id: int, damage: int, damage_sender_peer_id: int):
 	if not multiplayer.is_server():
 		return
 	
@@ -99,10 +101,40 @@ func apply_damage_to_player(peer_id: int, damage: int):
 	var new_hp: int = current_hp - damage
 	
 	on_data_update_request(peer_id, "hp", str(new_hp))
+	on_data_update_request(peer_id, "last_hurt_by", str(damage_sender_peer_id))
 	
 	# Server has updated their Player Data, 
 	# tell all the clients about the new data
 	ServerPlayerDataRpcs.player_data_updated.rpc(peer_id, "hp", str(players_data[peer_id]["hp"]))
+	ServerPlayerDataRpcs.player_data_updated.rpc(peer_id, "last_hurt_by", str(damage_sender_peer_id))
+
+
+# Server figures out who killed whom and notifies players
+func handle_player_killed(killed_peer_id: int):
+	print("Handling player killed on peer: ", multiplayer.get_unique_id(), ". seeing player died: ", killed_peer_id)
+	if not multiplayer.is_server():
+		return
+	
+	var killed_name: String = players_data[killed_peer_id]["name"]
+	
+	var killer_id: int = players_data[killed_peer_id]["last_hurt_by"].to_int()
+	var killer_name: String 
+	if killer_id == 0:
+		# Killed by environment or npc, or self
+		killer_name = players_data[killed_peer_id]["name"]
+		ServerKillfeedRpcs.announce_kill.rpc(killer_name, killed_name)
+		return
+	else:
+		killer_name = players_data[killer_id]["name"]
+	
+	# Award score for killing
+	on_data_update_request(killer_id, "score", str(str(players_data[killer_id]["score"]).to_int() + 1))
+	
+	# Tell every client that a player was killed
+	ServerKillfeedRpcs.announce_kill.rpc(killer_name, killed_name)
+	
+	# Announce kill locally for the host player
+	ServerKillfeedRpcs.announce_kill(killer_name, killed_name)
 
 
 ## Debug print all of the players data

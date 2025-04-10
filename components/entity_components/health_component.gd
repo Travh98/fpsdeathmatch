@@ -52,8 +52,9 @@ func update_health(new_health: int):
 	
 	# Check if dead
 	if health <= 0:
+		if not is_dead:
+			health_died.emit()
 		is_dead = true
 		#print(get_parent().name, " has died")
-		health_died.emit()
 	
 #	print(get_parent().name, " has health: ", get_health(), "/", max_health)

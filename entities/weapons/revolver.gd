@@ -17,16 +17,20 @@ var mob: Node
 var gun_cocked: bool = true
 
 
+func reload():
+	reloading_fx()
+	reloading_cooldown.reload()
+	ammo.reload_magazine()
+	ServerPlayerAnimsRpcs.on_player_reload.rpc_id(1, int(mob.name))
+
+
 func use_primary(eye_cast: RayCast3D, hitbox_cast: RayCast3D):
 	if anim_player.is_playing():
 		return
 	
 	if not ammo.is_ammo_loaded():
-		print("out of ammo")
-		reloading_fx()
-		reloading_cooldown.reload()
-		ammo.reload_magazine()
-		ServerPlayerAnimsRpcs.on_player_reload.rpc_id(1, int(mob.name))
+		#print("out of ammo")
+		reload()
 		return
 	
 	if not reloading_cooldown.is_reloaded():

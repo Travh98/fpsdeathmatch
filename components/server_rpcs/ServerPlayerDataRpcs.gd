@@ -51,7 +51,9 @@ func request_all_player_data():
 ## anything too suspicious. This feels safer than nothing.
 func safety_check(rpc_input: String) -> bool:
 	if rpc_input.is_empty():
+		print("Unsafe rpc input (empty): ", rpc_input)
 		return false
 	if rpc_input.length() > MAX_RPC_INPUT_LENGTH:
+		print("Unsafe rpc input (too long): ", rpc_input)
 		return false
 	return true

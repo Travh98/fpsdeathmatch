@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw66n55p0655k"]
+[gd_scene load_steps=10 format=3 uid="uid://bw66n55p0655k"]
 
 [ext_resource type="Script" uid="uid://djh8wx3uk2sbt" path="res://ui/player_hud.gd" id="1_fa7lo"]
 [ext_resource type="PackedScene" uid="uid://462ek3s4gxyu" path="res://ui/fps_counter.tscn" id="2_awr13"]
 [ext_resource type="Texture2D" uid="uid://duosndst2e6pc" path="res://assets/textures/tiny_crosshair.png" id="2_w5gje"]
 [ext_resource type="Script" path="res://ui/ping_counter.gd" id="3_18snh"]
+[ext_resource type="PackedScene" uid="uid://cbsslne0c6wgq" path="res://ui/killfeed_hud.tscn" id="5_7pawb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ia7ii"]
 bg_color = Color(0.196078, 0.196078, 0.196078, 0.588235)
@@ -225,3 +226,14 @@ theme_override_constants/separation = 64
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+
+[node name="KillfeedHud" parent="." instance=ExtResource("5_7pawb")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -150.0
+offset_bottom = 150.0
+grow_horizontal = 0

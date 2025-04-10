@@ -35,6 +35,8 @@ func _ready():
 	# update our player data dictionary
 	ServerDamageRpcs.server_damage_to_player.connect(player_data_mgr.apply_damage_to_player)
 	
+	ServerDamageRpcs.player_was_killed.connect(player_data_mgr.handle_player_killed)
+	
 	# When the server says the player's state has changed, update PlayerDataMgr
 	ServerPlayerDataRpcs.update_player_data.connect(player_data_mgr.on_server_data_updated)
 	
