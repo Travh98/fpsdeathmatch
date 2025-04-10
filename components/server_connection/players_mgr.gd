@@ -137,6 +137,23 @@ func update_player_health(peer_id: int, new_hp: int):
 	health_component.update_health(new_hp)
 
 
+func update_player_equipped_slot(peer_id: int, new_slot: int):
+	if not player_nodes.has(peer_id):
+		return
+	
+	# Find the health component under the MultiplayerClient node we are updating
+	# player_peer_name is the name of the player node that is a child of MultiplayerClient
+	var player_peer_name: String = str(peer_id)
+	if not player_nodes[peer_id].has_node(player_peer_name):
+		return
+	if not player_nodes[peer_id].get_node(player_peer_name).has_node("PlayerController/UseEquippedItem"):
+		return
+	
+	var use_equipped_item: UseEquippedItem = player_nodes[peer_id]\
+		.get_node(player_peer_name).get_node("PlayerController/UseEquippedItem")
+	use_equipped_item.switch_to_item_slot(new_slot)
+
+
 ## Triggers shooting anim on this player
 func on_player_shot(peer_id: int):
 	if not player_nodes.has(peer_id):

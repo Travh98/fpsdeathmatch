@@ -11,7 +11,7 @@ func _ready():
 
 
 func on_death():
-	# Only show/hide playermodels for other clients
+	# Only show/hide playermodels for other clientsw s
 	if is_multiplayer_authority(): return
 	
 	for model in player_models:

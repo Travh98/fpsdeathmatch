@@ -30,6 +30,10 @@ func on_hand_item_held():
 	right_arm_ik.start()
 
 
+func on_hand_unarmed():
+	right_arm_ik.stop()
+
+
 func set_running_pct(running_pct: float):
 	target_running_percent = running_pct
 

@@ -11,7 +11,6 @@ script = ExtResource("1_rrqxf")
 
 [node name="SpawnSpot" parent="." instance=ExtResource("2_e3ldd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = null
 
 [node name="OccupiedRaycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, 0)

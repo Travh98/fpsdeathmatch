@@ -161,7 +161,13 @@ script = ExtResource("1_xh4u4")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="RevolverHammer" parent="Revolver/RevolverRig/Skeleton3D" index="0"]
-transform = Transform3D(0.00686619, -1.05334e-09, -7.46507e-09, 1.22031e-09, 0.0120167, 0.0141869, 1.21643e-09, -0.00610935, 0.0279047, 3.51932e-05, 0.112362, 0.0552933)
+transform = Transform3D(0.00686619, -1.05334e-09, -7.46505e-09, 1.22031e-09, 0.0120167, 0.0141869, 1.21643e-09, -0.00610936, 0.0279047, 3.51932e-05, 0.112362, 0.0552933)
+
+[node name="Cube_004" parent="Revolver/RevolverRig/Skeleton3D" index="1"]
+transform = Transform3D(0.058854, -2.64698e-23, 0, 3.30872e-23, 0.0588541, 0, 1.32349e-23, 0, 0.058854, -2.58194e-16, -0.00836527, 0.00459307)
+
+[node name="RevolverCylinder" parent="Revolver/RevolverRig/Skeleton3D" index="2"]
+transform = Transform3D(0.0326766, 7.25546e-18, -7.31043e-18, -7.25548e-18, -0.000246506, -0.0326757, -7.3104e-18, 0.0326757, -0.000246506, 6.09943e-05, 0.156241, 0.123132)
 
 [node name="RevolverCylinder" parent="Revolver/RevolverRig/Skeleton3D/RevolverCylinder" index="0"]
 transform = Transform3D(0.999196, 0.000302481, 0.0400957, -0.000302482, 1, -6.0238e-06, -0.0400957, -6.1093e-06, 0.999196, 0, 0, 0)

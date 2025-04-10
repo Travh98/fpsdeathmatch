@@ -60,6 +60,13 @@ func _ready():
 	
 	health_component.damage_taken.connect(ouch_sfx.play_sound)
 	
+	use_equipped_item.unarmed.connect(godoot_man_player_model.on_hand_unarmed)
+	use_equipped_item.using_pistol.connect(godoot_man_player_model.on_hand_item_held)
+	
+	use_equipped_item.eye_cast = eye_cast
+	use_equipped_item.hitbox_cast = hitbox_cast
+	use_equipped_item.hand_spot = hand_spot
+	
 	# Disable or delete things that don't need to be included
 	# on replicated peers
 	# Also setup things that happen only on replicated peers
@@ -71,17 +78,12 @@ func _ready():
 		return
 	
 	# Reload weapon on respawn
-	respawning.respawned.connect(use_equipped_item.reset_item)
+	respawning.respawned.connect(use_equipped_item.reset_items)
 	
 	# Hide the playermodel for this client (so you don't see yourself)
 	godoot_man_player_model.visible = false
 	
 	player_name_label.text = ClientGlobals.client_name
-	#player_indicator.modulate = generate_random_hsv_color()
-	
-	use_equipped_item.eye_cast = eye_cast
-	use_equipped_item.hitbox_cast = hitbox_cast
-	use_equipped_item.hand_spot = hand_spot
 	
 	# On spawning, move to a spawn point
 	respawning.respawn.call_deferred()
@@ -106,6 +108,13 @@ func _input(event):
 		use_equipped_item.handle_primary()
 	if Input.is_action_just_pressed("reload"):
 		use_equipped_item.handle_reload()
+	
+	if Input.is_action_just_pressed("slot1"):
+		use_equipped_item.switch_to_item_slot(UseEquippedItem.ItemSlots.SLOT_REVOLVER)
+	if Input.is_action_just_pressed("slot2"):
+		use_equipped_item.switch_to_item_slot(UseEquippedItem.ItemSlots.SLOT_RIFLE)
+	if Input.is_action_just_pressed("slot3"):
+		use_equipped_item.switch_to_item_slot(UseEquippedItem.ItemSlots.SLOT_HANDS)
 
 
 func _physics_process(delta: float) -> void:

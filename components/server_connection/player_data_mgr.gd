@@ -10,6 +10,7 @@ signal player_data_changed()
 
 signal player_name_updated(peer_id: int, new_name: String)
 signal player_health_updated(peer_id: int, new_hp: int)
+signal player_equipped_slot(peer_id: int, slot: int)
 
 ## Enums used for the string keys of the player data dictionary
 enum PlayerDataKeys {
@@ -17,6 +18,7 @@ enum PlayerDataKeys {
 	PD_HP,
 	PD_SCORE,
 	PD_LASTHURTBY,
+	PD_EQUIPPEDSLOT,
 }
 
 ## Dictionary of the current state of each Player.
@@ -32,7 +34,8 @@ func on_player_spawned(peer_id: int):
 		PlayerDataKeys.PD_NAME: "", 
 		PlayerDataKeys.PD_HP: "100", 
 		PlayerDataKeys.PD_SCORE: "0", 
-		PlayerDataKeys.PD_LASTHURTBY: ""
+		PlayerDataKeys.PD_LASTHURTBY: "",
+		PlayerDataKeys.PD_EQUIPPEDSLOT: "",
 	}
 	players_data[peer_id] = new_player_data_dict
 
@@ -81,6 +84,9 @@ func on_players_data_updated(peer_id: int, data_key: PlayerDataKeys):
 		PlayerDataKeys.PD_SCORE:
 			pass
 		PlayerDataKeys.PD_LASTHURTBY:
+			pass
+		PlayerDataKeys.PD_EQUIPPEDSLOT:
+			player_equipped_slot.emit(peer_id, int(players_data[peer_id][data_key]))
 			pass
 		_:
 			print("Unsupported PlayerDataMgr data updated: ", data_key)

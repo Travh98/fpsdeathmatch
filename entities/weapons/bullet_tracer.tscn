@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ded6mpfb4kx1b"]
+[gd_scene load_steps=5 format=3 uid="uid://ded6mpfb4kx1b"]
 
 [ext_resource type="Script" uid="uid://doh1fyfh1pi36" path="res://entities/weapons/bullet_tracer.gd" id="1_wwa5c"]
 [ext_resource type="Material" uid="uid://ciswcr845emvw" path="res://assets/materials/bullet_tracer.material" id="2_3hphx"]
+[ext_resource type="AudioStream" uid="uid://c41ujnh0ofs8t" path="res://assets/sfx/bullets/bullet_wizz1.wav" id="3_8p2vm"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wwa5c"]
 material = ExtResource("2_3hphx")
@@ -17,3 +18,7 @@ script = ExtResource("1_wwa5c")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_wwa5c")
 skeleton = NodePath("../..")
+
+[node name="BulletWizzSfx" type="AudioStreamPlayer3D" parent="BulletNode"]
+stream = ExtResource("3_8p2vm")
+doppler_tracking = 1

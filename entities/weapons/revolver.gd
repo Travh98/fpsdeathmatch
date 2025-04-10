@@ -74,6 +74,7 @@ func shooting_fx():
 	anim_player.stop()
 	anim_player.play("shoot_and_recock")
 	rotate_revolver_cylinder.rotate_cylinder()
+	bullet_tracer.fire_visuals(global_position - global_transform.basis.z * 1000)
 
 
 func reloading_fx():

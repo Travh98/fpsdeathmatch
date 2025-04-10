@@ -35,23 +35,23 @@ node_connections = [&"Running", 0, &"Animation", &"Running", 1, &"Animation 2", 
 script = ExtResource("2_k5m0s")
 
 [node name="Skeleton3D" parent="GodootManRig" index="0"]
-bones/0/position = Vector3(0, 0.91209, -0.0501)
+bones/0/position = Vector3(0, 0.911682, -0.0501)
 bones/5/rotation = Quaternion(3.82851e-08, 0.861885, -0.507103, -4.7605e-07)
 bones/6/rotation = Quaternion(-3.64461e-07, -0.540308, 0.841467, -1.05202e-07)
-bones/17/rotation = Quaternion(0.99949, 0.0246465, -0.000497492, 0.0203253)
-bones/18/rotation = Quaternion(0.0781227, 0.0019226, 0.0245764, 0.996639)
-bones/19/rotation = Quaternion(-0.505238, 1.18363e-07, -5.97691e-08, 0.86298)
-bones/22/rotation = Quaternion(0.896496, -0.0221082, 0.010905, 0.442366)
-bones/23/rotation = Quaternion(0.608911, -0.0150122, -0.0195532, 0.792856)
-bones/24/rotation = Quaternion(-0.380041, -2.26659e-07, 4.09089e-08, 0.92497)
+bones/17/rotation = Quaternion(0.900585, 0.022209, -0.0106982, 0.433982)
+bones/18/rotation = Quaternion(0.608219, 0.0149951, 0.0195663, 0.793386)
+bones/19/rotation = Quaternion(-0.371174, 2.25859e-07, -4.17917e-08, 0.928563)
+bones/22/rotation = Quaternion(0.999098, -0.0246369, 0.000849144, 0.0345859)
+bones/23/rotation = Quaternion(0.0807006, -0.00198616, -0.0245713, 0.996434)
+bones/24/rotation = Quaternion(-0.503871, -1.18261e-07, 5.99292e-08, 0.863779)
 bones/25/rotation = Quaternion(-4.31393e-08, 0.964307, -0.264788, -7.28031e-08)
 bones/26/rotation = Quaternion(-0.681868, 0.681868, -0.187233, -0.187233)
 
 [node name="Godoot" parent="GodootManRig/Skeleton3D" index="0"]
-transform = Transform3D(1, -9.35918e-14, -1.13687e-13, -5.31797e-14, 1, -1.48546e-07, 3.41061e-13, 2.38419e-07, 1, -7.16978e-14, 1.55563, 0.164813)
+transform = Transform3D(1, -9.35918e-14, -1.13687e-13, -5.31797e-14, 1, -1.48546e-07, 3.41061e-13, 2.38419e-07, 1, -7.16978e-14, 1.55522, 0.164813)
 
 [node name="GodootHorns" parent="GodootManRig/Skeleton3D" index="1"]
-transform = Transform3D(1, -9.35918e-14, -1.13687e-13, -5.31797e-14, 1, -1.48546e-07, 3.41061e-13, 2.38419e-07, 1, -7.16978e-14, 1.55563, 0.164813)
+transform = Transform3D(1, -9.35918e-14, -1.13687e-13, -5.31797e-14, 1, -1.48546e-07, 3.41061e-13, 2.38419e-07, 1, -7.16978e-14, 1.55522, 0.164813)
 
 [node name="HeadLookAt" type="LookAtModifier3D" parent="GodootManRig/Skeleton3D" index="5"]
 bone_name = "spine.005"
@@ -66,7 +66,7 @@ root_bone = &"shoulder.R"
 tip_bone = &"hand.R"
 
 [node name="HeadBoneAttach" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="8"]
-transform = Transform3D(-1, -1.13687e-13, -6.27833e-07, -1.25726e-09, 0.999998, 0.0020026, 6.27831e-07, 0.00200269, -0.999998, -4.68288e-14, 1.55863, 0.165451)
+transform = Transform3D(-1, -1.13687e-13, -6.27833e-07, -1.25726e-09, 0.999998, 0.0020026, 6.27831e-07, 0.00200269, -0.999998, -4.68288e-14, 1.55822, 0.165451)
 bone_name = "spine.005"
 bone_idx = 5
 
@@ -76,77 +76,77 @@ bone_idx = 5
 transform = Transform3D(1, -1.43099e-07, 1.65254e-08, 1.43099e-07, 0.973679, -0.227926, 1.65255e-08, 0.227926, 0.973679, 0, 0.069, 0.03)
 
 [node name="ChestBone" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="9"]
-transform = Transform3D(1, 3.43439e-18, -4.1046e-18, -4.1046e-18, 0.984318, -0.176405, 3.43439e-18, 0.176405, 0.984317, 0, 1.31019, -0.00490003)
+transform = Transform3D(1, 3.43439e-18, -4.1046e-18, -4.1046e-18, 0.984318, -0.176405, 3.43439e-18, 0.176405, 0.984317, 0, 1.30978, -0.00490003)
 bone_name = "spine.003"
 bone_idx = 3
 
 [node name="ChestHitbox" parent="GodootManRig/Skeleton3D/ChestBone" index="0" instance=ExtResource("4_04gs4")]
 
 [node name="HipsBone" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="10"]
-transform = Transform3D(1, 0, 0, 0, 0.968328, -0.249681, 0, 0.249681, 0.968328, 0, 0.91209, -0.0501)
+transform = Transform3D(1, 0, 0, 0, 0.968328, -0.249681, 0, 0.249681, 0.968328, 0, 0.911682, -0.0501)
 bone_name = "spine"
 bone_idx = 0
 
 [node name="HipsHitbox" parent="GodootManRig/Skeleton3D/HipsBone" index="0" instance=ExtResource("5_x42ao")]
 
 [node name="ThighBoneL" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="11"]
-transform = Transform3D(0.998785, 0.049288, 7.41765e-06, 0.0481863, -0.97649, 0.210108, 0.010363, -0.209852, -0.97768, 0.12176, 0.946456, 0.0014)
+transform = Transform3D(0.998785, 0.0492878, 7.25316e-06, 0.0393678, -0.797674, -0.601804, -0.0296558, 0.601072, -0.798646, 0.12176, 0.946048, 0.0014)
 bone_name = "thigh.L"
 bone_idx = 17
 
 [node name="ThighHitbox" parent="GodootManRig/Skeleton3D/ThighBoneL" index="0" instance=ExtResource("6_cdxlr")]
 
 [node name="ThighBoneR" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="12"]
-transform = Transform3D(0.998785, -0.0492878, -7.24757e-06, -0.0388075, -0.786318, -0.616604, 0.0303853, 0.615853, -0.787276, -0.12176, 0.946456, 0.0014)
+transform = Transform3D(0.998785, -0.049288, -7.41928e-06, -0.0484624, -0.982081, 0.182123, -0.00898373, -0.1819, -0.983278, -0.12176, 0.946048, 0.0014)
 bone_name = "thigh.R"
 bone_idx = 22
 
 [node name="ThighHitbox" parent="GodootManRig/Skeleton3D/ThighBoneR" index="0" instance=ExtResource("6_cdxlr")]
 
 [node name="ShinBoneL" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="13"]
-transform = Transform3D(1, 1.95662e-08, -2.6695e-07, 1.12028e-07, -0.932999, 0.359879, -2.42822e-07, -0.359879, -0.933001, 0.14245, 0.536539, -0.0866929)
+transform = Transform3D(1, -5.69698e-08, 2.09163e-08, -5.67579e-08, -0.788557, 0.614963, -1.09785e-08, -0.614965, -0.788556, 0.14245, 0.611196, 0.253721)
 bone_name = "shin.L"
 bone_idx = 18
 
 [node name="ShinHitbox" parent="GodootManRig/Skeleton3D/ShinBoneL" index="0" instance=ExtResource("7_gn8to")]
 
 [node name="ShinBoneR" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="14"]
-transform = Transform3D(1, 7.30674e-08, -3.70674e-08, 8.11224e-08, -0.798848, 0.601534, 1.16838e-08, -0.601535, -0.798847, -0.14245, 0.616371, 0.259926)
+transform = Transform3D(1, -5.56611e-09, 2.66763e-07, -9.87719e-08, -0.941153, 0.337981, 2.47344e-07, -0.337981, -0.941155, -0.14245, 0.533785, -0.0749592)
 bone_name = "shin.R"
 bone_idx = 23
 
 [node name="ShinHitbox" parent="GodootManRig/Skeleton3D/ShinBoneR" index="0" instance=ExtResource("7_gn8to")]
 
 [node name="UpperArmL" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="15"]
-transform = Transform3D(-0.00284319, 0.999905, 0.0134594, -0.999995, -0.00285686, 0.000985468, 0.00102388, -0.0134566, 0.999909, 0.166955, 1.45016, 0.000454813)
+transform = Transform3D(-0.00284319, 0.999905, 0.0134594, -0.999995, -0.00285686, 0.000985468, 0.00102388, -0.0134566, 0.999909, 0.166955, 1.44975, 0.000454813)
 bone_name = "upper_arm.L"
 bone_idx = 10
 
 [node name="UpperarmHitbox" parent="GodootManRig/Skeleton3D/UpperArmL" index="0" instance=ExtResource("8_xvri2")]
 
 [node name="UpperArmR" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="16"]
-transform = Transform3D(-0.00284319, -0.999905, -0.0134594, 0.999995, -0.00285686, 0.000985468, -0.00102388, -0.0134566, 0.999909, -0.166955, 1.45016, 0.000454813)
+transform = Transform3D(-0.00284319, -0.999905, -0.0134594, 0.999995, -0.00285686, 0.000985468, -0.00102388, -0.0134566, 0.999909, -0.166955, 1.44975, 0.000454813)
 bone_name = "upper_arm.R"
 bone_idx = 14
 
 [node name="UpperarmHitbox" parent="GodootManRig/Skeleton3D/UpperArmR" index="0" instance=ExtResource("8_xvri2")]
 
 [node name="ForearmL" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="17"]
-transform = Transform3D(0.0244154, 0.999568, -0.0163344, -0.999197, 0.0238805, -0.0321676, -0.0317636, 0.0171066, 0.999349, 0.51619, 1.44916, -0.00424515)
+transform = Transform3D(0.0244154, 0.999568, -0.0163344, -0.999197, 0.0238805, -0.0321676, -0.0317636, 0.0171066, 0.999349, 0.51619, 1.44875, -0.00424515)
 bone_name = "forearm.L"
 bone_idx = 11
 
 [node name="ForearmHitbox" parent="GodootManRig/Skeleton3D/ForearmL" index="0" instance=ExtResource("9_amlm1")]
 
 [node name="ForearmR" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="18"]
-transform = Transform3D(0.0244154, -0.999568, 0.0163344, 0.999197, 0.0238805, -0.0321676, 0.0317636, 0.0171066, 0.999349, -0.51619, 1.44916, -0.00424515)
+transform = Transform3D(0.0244154, -0.999568, 0.0163344, 0.999197, 0.0238805, -0.0321676, 0.0317636, 0.0171066, 0.999349, -0.51619, 1.44875, -0.00424515)
 bone_name = "forearm.R"
 bone_idx = 15
 
 [node name="ForearmHitbox" parent="GodootManRig/Skeleton3D/ForearmR" index="0" instance=ExtResource("9_amlm1")]
 
 [node name="FootBoneL" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="19"]
-transform = Transform3D(1, 2.25919e-07, 1.51084e-07, 2.6808e-07, -0.770496, -0.637445, -2.84009e-08, 0.637447, -0.770497, 0.14245, 0.135835, -0.241254)
+transform = Transform3D(1, -1.45744e-07, 4.26355e-07, -1.02209e-07, -0.995182, -0.0980496, 4.46154e-07, 0.0980477, -0.995183, 0.14245, 0.272527, -0.0103938)
 bone_name = "foot.L"
 bone_idx = 19
 
@@ -154,7 +154,7 @@ bone_idx = 19
 transform = Transform3D(1, 7.33898e-07, -1.50179e-08, 3.90804e-07, -0.514963, 0.857212, 6.21373e-07, -0.857212, -0.514963, -4.47035e-08, 0.0900024, 0.0781124)
 
 [node name="FootBoneR" type="BoneAttachment3D" parent="GodootManRig/Skeleton3D" index="20"]
-transform = Transform3D(1, 1.74622e-07, -4.25389e-07, 1.16563e-07, -0.991001, -0.13386, -4.47593e-07, 0.133858, -0.991002, -0.14245, 0.273282, 0.00157884)
+transform = Transform3D(1, -2.19302e-07, -1.38233e-07, -2.59735e-07, -0.757463, -0.652878, 3.66321e-08, 0.65288, -0.757464, -0.14245, 0.129578, -0.220115)
 bone_name = "foot.R"
 bone_idx = 24
 

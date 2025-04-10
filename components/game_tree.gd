@@ -54,6 +54,8 @@ func _ready():
 	
 	player_data_mgr.player_name_updated.connect(players_mgr.update_player_name)
 	
+	player_data_mgr.player_equipped_slot.connect(players_mgr.update_player_equipped_slot)
+	
 	# Update health of players when server says their health changed
 	player_data_mgr.player_health_updated.connect(players_mgr.update_player_health)
 	

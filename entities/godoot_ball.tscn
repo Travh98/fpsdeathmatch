@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bd5vr63upwr3q" path="res://assets/props/pr_godoot_stuffie.tscn" id="1_wy83c"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vh5jt"]
+radius = 0.25
 
 [node name="GodootBall" type="RigidBody3D"]
 script = ExtResource("1_vh5jt")
@@ -12,7 +13,7 @@ script = ExtResource("1_vh5jt")
 shape = SubResource("SphereShape3D_vh5jt")
 
 [node name="GodootStuffie" parent="." instance=ExtResource("1_wy83c")]
-transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 0, 0)
+transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, 0, 0)
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 15.0
