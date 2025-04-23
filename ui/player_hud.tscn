@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://djh8wx3uk2sbt" path="res://ui/player_hud.gd" id="1_fa7lo"]
 [ext_resource type="PackedScene" uid="uid://462ek3s4gxyu" path="res://ui/fps_counter.tscn" id="2_awr13"]
 [ext_resource type="Texture2D" uid="uid://duosndst2e6pc" path="res://assets/textures/tiny_crosshair.png" id="2_w5gje"]
-[ext_resource type="Script" path="res://ui/ping_counter.gd" id="3_18snh"]
+[ext_resource type="PackedScene" uid="uid://dpd0nuph6m5gd" path="res://ui/ping_counter.tscn" id="3_q84jv"]
 [ext_resource type="PackedScene" uid="uid://cbsslne0c6wgq" path="res://ui/killfeed_hud.tscn" id="5_7pawb"]
 [ext_resource type="PackedScene" uid="uid://21q5ytd883nv" path="res://ui/deathmatch_win_screen.tscn" id="6_sjha8"]
 [ext_resource type="PackedScene" uid="uid://d1o6wao06v81n" path="res://ui/damage_vignette.tscn" id="7_q84jv"]
@@ -60,10 +60,10 @@ layout_mode = 2
 
 [node name="ControlsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "[C] Switch View
-[Alt+Enter] Fullscreen
+text = "[Alt+Enter] Fullscreen
 [V] Noclip
 [Esc] Menu
+[Tab] Scoreboard
 "
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -144,18 +144,8 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="PingCounter" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/HBoxContainer2/PanelContainer/MarginContainer"]
+[node name="PingCounter" parent="MarginContainer/VBoxContainer2/HBoxContainer2/PanelContainer/MarginContainer" instance=ExtResource("3_q84jv")]
 layout_mode = 2
-alignment = 2
-script = ExtResource("3_18snh")
-
-[node name="PingLabel" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer2/PanelContainer/MarginContainer/PingCounter"]
-layout_mode = 2
-text = "[ping]"
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer2/PanelContainer/MarginContainer/PingCounter"]
-layout_mode = 2
-text = "ms ping"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
