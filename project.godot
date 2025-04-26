@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="FpsDeathmatch"
+config/name="FpsDeathmatch - Sample Multiplayer game for GodotCon Boston"
+config/description="This project demonstrates the multiplayer capabilities of the Godot Game Engine.
+Built for GodotCon Boston by Travh98."
 run/main_scene="uid://clroff7vduxfd"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://7mthi121ly72"
 
 [autoload]
 
